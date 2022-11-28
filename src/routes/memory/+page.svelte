@@ -3,8 +3,8 @@
   for (let index = 0; index < 4; index++) {
     cards.push({
       id: 5, // TODO: unique ids per card card
-      img: "/notrick.gif", // TODO: unique images per card card
-      flipped: true,  // TODO: think
+      img: "/wave.jpeg", // TODO: unique images per card card
+      flipped: false,  // TODO: think
       completed: false,
     });
   }
@@ -12,11 +12,12 @@
   function flip(card) {
     // flip card over if two cards are not already flipped
     // TODO: and card is already not flipped
-    if (card.flipped && flipcount < 2) {
+    if (!card.flipped && flipcount < 2) {
       // TODO: Probably do what?
-
+      card.flipped=!card.flipped
+      flipcount++;
       // flip the cards over after 2s from seeing both cards
-      if (flipcount == 4) {
+      if (flipcount == 2) {
         setTimeout(() => {
           // flip over cards that have not been marked as "completed"
           cards.forEach((card) => {
