@@ -1,15 +1,7 @@
 <script>
   import { enhance } from "$app/forms";
-  import { beforeNavigate, invalidate } from "$app/navigation";
-  import "@picocss/pico";
   import "elizabot";
   import ElizaBot from "elizabot";
-
-  beforeNavigate(() => {
-    invalidate(); // force csr to "unload" the imported css on this page
-    // try commenting this out and navigate using href links and see how the
-    // picocss is carried with us to other pages. its an ugly hack.
-  });
 
   let eliza = new ElizaBot();
 
@@ -51,6 +43,16 @@
     procesing = false;
   }
 </script>
+
+<svelte:head>
+  <link rel="stylesheet" href="pico.min.css" />
+  <style>
+    nav {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+  </style>
+</svelte:head>
 
 <div class="chat container">
   <div class="scrollable">
