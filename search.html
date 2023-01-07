@@ -5,7 +5,6 @@
 		<link rel="icon" href="./favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-security-policy" content="">
-		<link href="./_app/immutable/assets/_page-152f6357.css" rel="stylesheet">
 		<link rel="modulepreload" href="./_app/immutable/start-bf3a348c.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index-31589446.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-bc435a7a.js">
@@ -16,8 +15,12 @@
 		<link rel="modulepreload" href="./_app/immutable/components/pages/_layout.svelte-ff87aa20.js">
 		<link rel="modulepreload" href="./_app/immutable/modules/pages/_layout.js-9cbb603b.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/telltale/_page.svelte-7f2cfdef.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index-318ce104.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/search/_layout.svelte-ed15829e.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/search/_page.svelte-c7ec680c.js"><!-- HEAD_svelte-1lc4dl3_START --><link rel="stylesheet" href="/pico.min.css"><style>nav {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+  </style><!-- HEAD_svelte-1lc4dl3_END -->
 	</head>
 	<body>
 		<div style="display: contents">
@@ -36,29 +39,25 @@
 
 <hr>
 
-<main class="svelte-1rcdl96"><div class="grid svelte-1rcdl96">
-    
-      <div class="container svelte-1rcdl96">
-        <img src="wave.jpeg" alt="The greatest story ever." class="svelte-1rcdl96">
-          
-          <p>The greatest story ever.</p>
-          <div class="row svelte-1rcdl96">
-            <button>Begin</button></div>
-          </div></div>
-</main>
 
 
-		<script type="module" data-sveltekit-hydrate="1g95ch4">
+<main class="container">
+<div class="chat"><h1>Press any of the following categories to display their items</h1>
+  <hr>
+  <ul><li><a href="/search/users">Users</a></li><li><a href="/search/addresses">Address</a></li><li><a href="/search/banks">Banks</a></li><li><a href="/search/appliances">Appliances</a></li><li><a href="/search/beers">Beers</a></li><li><a href="/search/blood_types">Blood Types</a></li><li><a href="/search/credit_cards">Credit Cards</a></li></ul></div></main>
+
+
+		<script type="module" data-sveltekit-hydrate="qgh2w9">
 			import { start } from "./_app/immutable/start-bf3a348c.js";
 
 			start({
 				env: {},
 				paths: {"base":"","assets":""},
-				target: document.querySelector('[data-sveltekit-hydrate="1g95ch4"]').parentNode,
+				target: document.querySelector('[data-sveltekit-hydrate="qgh2w9"]').parentNode,
 				version: "1673125393153",
 				hydrate: {
-					node_ids: [0, 12],
-					data: [null,null],
+					node_ids: [0, 3, 10],
+					data: [null,null,null],
 					form: null
 				}
 			});
