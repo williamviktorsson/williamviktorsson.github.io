@@ -5,4 +5,4 @@
 export const prerender = true;
 
 /* we are building a static site so we will not be using server-side-rendering */
-export const ssr= false;
+export const ssr=false;

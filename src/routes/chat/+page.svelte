@@ -45,7 +45,7 @@
 </script>
 
 <svelte:head>
-  <link rel="stylesheet" href="pico.min.css" />
+  <link rel="stylesheet" href="/pico.min.css" />
   <style>
     nav {
       margin-left: 10%;
@@ -63,6 +63,7 @@
     {/each}
   </div>
   <form
+    method="post"
     use:enhance={({ form, data, action, cancel }) => {
       cancel(); //don't post anything to server
       const text = data.get("text");
