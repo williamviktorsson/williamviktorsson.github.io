@@ -1,20 +1,29 @@
+<script>
+  import "prism-themes/themes/prism-one-dark.css";
+</script>
+
+<svelte:head>
+  <link rel="stylesheet" href="/pico.min.css" />
+
+  <style>
+    nav {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+  </style>
+</svelte:head>
+
 <nav>
-  <a href="/">Hem</a>
-  <a href="/telltale">Telltale</a>
-  <a href="/memory">Memory</a>
-  <a href="/chat">Chat</a>
-  <a href="/search">Search</a>
-  <a href="/blog">Blog</a>
-
-
-
-  <a
-    target="_blank"
-    href="https://github.com/williamviktorsson/williamviktorsson.github.io"
-    >GitHub</a
-  >
+  <ul>
+    <li><a href="/">Hem</a></li>
+    <li><a href="/devblog">Blog</a></li>
+  </ul>
 </nav>
 
-<hr />
+<main class="container-fluid">
+  <hr />
 
-<slot />
+  <main class="container">
+    <slot />
+  </main>
+</main>
