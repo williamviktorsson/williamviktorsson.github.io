@@ -1,6 +1,5 @@
 <script>
   import { onMount } from "svelte";
-  import { goto } from "$app/navigation";
   import toast, { Toaster } from "svelte-french-toast";
 
   let items = [];
