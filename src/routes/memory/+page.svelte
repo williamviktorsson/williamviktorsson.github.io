@@ -2,35 +2,53 @@
   let cards = [];
   for (let index = 0; index < 4; index++) {
     cards.push({
-      id: 5, // TODO: unique ids per card card
+      id: index, // TODO: unique ids per card card
       img: "/notrick.gif", // TODO: unique images per card card
-      flipped: true,  // TODO: think
+      flipped: false,  // TODO: think
       completed: false,
     });
   }
   let flipcount = 0;
-  function flip(card) {
-    // flip card over if two cards are not already flipped
-    // TODO: and card is already not flipped
-    if (card.flipped && flipcount < 2) {
-      // TODO: Probably do what?
 
-      // flip the cards over after 2s from seeing both cards
-      if (flipcount == 4) {
-        setTimeout(() => {
-          // flip over cards that have not been marked as "completed"
-          cards.forEach((card) => {
-            card.flipped = card.completed;
-          });
-          flipcount = 0;
-          cards = cards;
-        }, 2000);
-      }
-      cards = cards;
-    } else {
-      alert("chill");
-    }
+  function flip(card) {
+  // check if the card is already completed, already flipped twice or already flipped once
+  if (card.completed || flipcount >= 2 || card.flipped) {
+    alert("chill");
+    return;
   }
+
+  // flip the card over
+  card.flipped = true;
+
+  // increment the flip count
+  flipcount++;
+
+  // if two cards have been flipped, check if they match
+  if (flipcount == 2) {
+    // get the two flipped cards
+    const flippedCards = cards.filter((card) => card.flipped && !card.completed);
+
+    // if the two flipped cards match, mark them as completed
+    if (flippedCards.length == 2 && flippedCards[0].id == flippedCards[1].id) {
+      flippedCards.forEach((card) => {
+        card.completed = true;
+        card.flipped = false;
+      });
+    }
+
+    // reset the flip count after a brief delay
+    setTimeout(() => {
+      cards.forEach((card) => {
+        if (!card.completed) {
+          card.flipped = false;
+        }
+      });
+      flipcount = 0;
+    }, 1000);
+  }
+  cards = cards;
+}
+
 </script>
 
 <main>
