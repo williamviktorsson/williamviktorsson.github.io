@@ -1,5 +1,6 @@
 <script>
   let students = [];
+  let gameIdeas = [];
 
   const initialGameElements = [
     "Zombies",
@@ -82,8 +83,13 @@
       )[0],
     };
 
-    students.push({ student });
+    students.push(student);
+    gameIdeas.push({
+      gameElement: student.gameElement,
+      verbOrIdea: student.verbOrIdea,
+    });
     students = students;
+    gameIdeas = gameIdeas;
   }
 
   function reset() {
@@ -92,6 +98,7 @@
     roles = [...initialRoles];
     verbsOrIdeas = [...initialVerbsOrIdeas];
     students = [];
+    gameIdeas = [];
   }
 </script>
 
@@ -103,26 +110,31 @@
         <button on:click={reset}>Återställ</button>
       </div>
 
+      <!-- Table for Skills and Roles -->
+      <h2>Studenter</h2>
       <table role="grid">
-        <thead>
-          <tr>
-            <th scope="col">Spelelement</th>
-            <th scope="col">Färdigheter</th>
-            <th scope="col">Roller</th>
-            <th scope="col">Verb/Idéer</th>
-          </tr>
-        </thead>
         <tbody>
-          {#each students as { student }, i}
+          {#each students as student, i}
             <tr>
-              <td>{student.gameElement}</td>
+              <td>Student {i + 1}</td>
               <td>{student.gameDevSkill}</td>
               <td>{student.role}</td>
-              <td>{student.verbOrIdea}</td>
             </tr>
           {/each}
         </tbody>
-        <tfoot />
+      </table>
+
+      <!-- Table for Game Ideas and Game Elements -->
+      <h2>Spelidéer och spelelement</h2>
+      <table role="grid">
+        <tbody>
+          {#each gameIdeas as idea}
+            <tr>
+              <td>{idea.gameElement}</td>
+              <td>{idea.verbOrIdea}</td>
+            </tr>
+          {/each}
+        </tbody>
       </table>
     </article>
   </main>
