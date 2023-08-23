@@ -5,58 +5,56 @@
 		<link rel="icon" href="./favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-security-policy" content="">
-		<link rel="modulepreload" href="./_app/immutable/start-a40370af.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index-edc758cc.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-603ef5c3.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index-49acbfc7.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper-41c905a7.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/control-f5b05b5f.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/parse-f0c618df.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/_layout.svelte-fa5b1d3a.js">
-		<link rel="modulepreload" href="./_app/immutable/modules/pages/_layout.js-9cbb603b.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/_page.svelte-d8562401.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.cabbfaf5.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.81c2a7b5.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.28d901e8.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.39f86d87.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.bbe32abe.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.js.984db11e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.da46b06b.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_page.svelte.0794259b.js"><!-- HEAD_svelte-1dkvwk8_START --><link rel="stylesheet" href="/pico.min.css"><!-- HEAD_svelte-1dkvwk8_END -->
 	</head>
 	<body>
 		<div style="display: contents">
 
 
-<nav><a href="/">Hem</a>
-  <a href="/telltale">Telltale</a>
-  <a href="/memory">Memory</a>
-  <a href="/chat">Chat</a>
-  <a href="/search">Search</a>
-  <a href="/blog">Blog</a>
 
 
+<body><main class="container"><article><div class="grid"><button>Slumpa</button>
+        <button>Återställ</button></div>
 
-  <a target="_blank" href="https://github.com/williamviktorsson/williamviktorsson.github.io">GitHub</a></nav>
-
-<hr>
-
-<h1>Välkommen till min hemsida!
-</h1>
-
-<h2>Här har jag samlat min uppgifter jag gjort i samband med webbutveckling i årskurs 2 på Maja Beskowgymnasiet!</h2>
-
-<h3>yo whatup a</h3>
+      <table role="grid"><thead><tr><th scope="col">Spelelement</th>
+            <th scope="col">Färdigheter</th>
+            <th scope="col">Roller</th>
+            <th scope="col">Verb/Idéer</th></tr></thead>
+        <tbody></tbody>
+        <tfoot></tfoot></table></article></main></body>
 
 
-		<script type="module" data-sveltekit-hydrate="1fcjv8f">
-			import { start } from "./_app/immutable/start-a40370af.js";
+			
+			<script>
+				{
+					__sveltekit_1j8xbo0 = {
+						env: {},
+						base: new URL(".", location).pathname.slice(0, -1),
+						element: document.currentScript.parentElement
+					};
 
-			start({
-				env: {},
-				paths: {"base":"","assets":""},
-				target: document.querySelector('[data-sveltekit-hydrate="1fcjv8f"]').parentNode,
-				version: "1675355191136",
-				hydrate: {
-					node_ids: [0, 5],
-					data: [null,null],
-					form: null
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.cabbfaf5.js"),
+						import("./_app/immutable/entry/app.39f86d87.js")
+					]).then(([kit, app]) => {
+						kit.start(app, __sveltekit_1j8xbo0.element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
 				}
-			});
-		</script>
-	</div>
+			</script>
+		</div>
 	</body>
 </html>
