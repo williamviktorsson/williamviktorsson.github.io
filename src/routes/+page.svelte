@@ -102,7 +102,7 @@
   }
 </script>
 
-<body>
+
   <main class="container">
     <article>
       <div class="grid">
@@ -138,4 +138,3 @@
       </table>
     </article>
   </main>
-</body>
