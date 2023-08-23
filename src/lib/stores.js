@@ -23,3 +23,8 @@ if (browser) {
                 console.log(value)
         })
 }
+
+let map = new Map()
+
+map.set("asd",123)
+console.log(map.get("asd"))

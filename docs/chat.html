@@ -5,17 +5,18 @@
 		<link rel="icon" href="./favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-security-policy" content="">
-		<link rel="modulepreload" href="./_app/immutable/start-bf3a348c.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index-31589446.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-bc435a7a.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index-8afd756c.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper-41c905a7.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/control-f5b05b5f.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/parse-f0c618df.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/_layout.svelte-ff87aa20.js">
-		<link rel="modulepreload" href="./_app/immutable/modules/pages/_layout.js-9cbb603b.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/chat/_page.svelte-b5d48dc5.js"><!-- HEAD_svelte-1seg4vd_START --><link rel="stylesheet" href="/pico.min.css"><style>nav {
+		<link rel="modulepreload" href="./_app/immutable/entry/start.6a3876a2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.e36dfafc.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.f1930795.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.6bf647b8.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.e7f5239e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/parse.d12b0d5b.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.cfc4c68d.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.6cdc29e1.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.js.984db11e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.da46b06b.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/chat-page.svelte.2fda45d4.js"><!-- HEAD_svelte-1seg4vd_START --><link rel="stylesheet" href="/pico.min.css"><style>nav {
       margin-left: 10%;
       margin-right: 10%;
     }
@@ -26,6 +27,7 @@
 
 
 <nav><a href="/">Hem</a>
+  <a href="/spinner">Spinner</a>
   <a href="/telltale">Telltale</a>
   <a href="/memory">Memory</a>
   <a href="/chat">Chat</a>
@@ -41,26 +43,35 @@
 
 
 <div class="container"><h1>TODO: Complete assignment</h1>
-  <div class="scrollable">
-    <article><span>Please tell me what's been bothering you.</span></article></div>
+  <div class="scrollable"><article><span>eliza: How do you do.  Please tell me your problem.</span>
+      </article></div>  
   <form method="post"><input type="text" name="text"></form></div>
 
 
-		<script type="module" data-sveltekit-hydrate="q7k34o">
-			import { start } from "./_app/immutable/start-bf3a348c.js";
+			
+			<script>
+				{
+					__sveltekit_2fguql = {
+						env: {},
+						base: new URL(".", location).pathname.slice(0, -1),
+						element: document.currentScript.parentElement
+					};
 
-			start({
-				env: {},
-				paths: {"base":"","assets":""},
-				target: document.querySelector('[data-sveltekit-hydrate="q7k34o"]').parentNode,
-				version: "1673125352534",
-				hydrate: {
-					node_ids: [0, 8],
-					data: [null,null],
-					form: null
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.6a3876a2.js"),
+						import("./_app/immutable/entry/app.cfc4c68d.js")
+					]).then(([kit, app]) => {
+						kit.start(app, __sveltekit_2fguql.element, {
+							node_ids: [0, 8],
+							data,
+							form: null,
+							error: null
+						});
+					});
 				}
-			});
-		</script>
-	</div>
+			</script>
+		</div>
 	</body>
 </html>

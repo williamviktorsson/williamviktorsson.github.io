@@ -1,51 +1,39 @@
 <script>
   import { enhance } from "$app/forms";
+  import "elizabot";
   import ElizaBot from "elizabot";
 
-  // Initialize ElizaBot and chat messages
-  const eliza = new ElizaBot();
+  let eliza = new ElizaBot();
+
   let chat = [{ user: "eliza", text: eliza.getInitial() }];
 
-  // Track whether the chatbot is currently responding to a message
-  let responding = false;
 
-  // Track the latest messages from the user that haven't been responded to yet
-  let latestUserMessages = [];
-
-  // Function to write a message to the chat
   async function write(message) {
-    // Add the user's message to the chat and the latestUserMessages array
-    chat = [...chat, { user: "user", text: message }];
-    latestUserMessages.push(message);
 
-    // Wait until the chatbot is finished responding to the previous message
-    while (responding) {
-      await new Promise((resolve) => setTimeout(resolve, 50));
-    }
+  // Add the user message to the chat array
+  chat.push({ user: "user", text: message });
 
-    // If there are no new messages from the user, return
-    const messages = latestUserMessages.splice(0, latestUserMessages.length);
-    if (!messages.length) return;
+  chat = chat;
 
-    // Set responding to true so that the chatbot doesn't respond to multiple messages at once
-    responding = true;
+  // Transform the user message using ElizaBot
+  let response = eliza.transform(message);
 
-    // Add a new Eliza message to the chat and get its index
-    const elizaMessageIndex = chat.push({ user: "eliza", text: "" }) - 1;
+  await new Promise((r) => setTimeout(r, 1000 + Math.random() * 1000));
 
-    // Generate the response message for each message in messages array
-    const response = messages.map((m) => eliza.transform(m)).join("\n");
+  // Add the bot response to the chat array
+  chat.push({ user: "eliza", text: response });
 
-    // Iterate over each character in the response and add it to the Eliza message one-by-one
-    for (const char of response) {
-      await new Promise((resolve) => setTimeout(resolve, 50));
-      chat[elizaMessageIndex].text += char;
-    }
+  chat = chat
 
-    // Set responding to false now that the chatbot has finished responding
-    responding = false;
-  }
+  // random delay for writing
+
+  // TODO: write the text
+
+  console.log("yo?")
+
+}
 </script>
+
 
 <svelte:head>
   <link rel="stylesheet" href="/pico.min.css" />
@@ -57,27 +45,24 @@
   </style>
 </svelte:head>
 
-<!-- The HTML for the chatbot -->
 <div class="container">
-  <h1>Chatbot</h1>
+  <h1>TODO: Complete assignment</h1>
   <div class="scrollable">
     {#each chat as message}
       <article>
         <span>{message.user}: {message.text}</span>
       </article>
     {/each}
-  </div>
+  </div>  
   <form
     method="post"
     use:enhance={({ form, data, action, cancel }) => {
-      // Cancel the form submission so that the page doesn't reload
-      cancel();
-      
-      // Get the user's message from the form and write it to the chat
+      /* https://kit.svelte.dev/docs/form-actions#progressive-enhancement */
+      cancel(); //don't post anything to server
       const text = data.get("text");
       write(text);
-      
-      // Reset the form input
+
+      // TODO: reset the form using form.reset()
       form.reset();
     }}
   >

@@ -1,5 +1,6 @@
 <nav>
   <a href="/">Hem</a>
+  <a href="/spinner">Spinner</a>
   <a href="/telltale">Telltale</a>
   <a href="/memory">Memory</a>
   <a href="/chat">Chat</a>
