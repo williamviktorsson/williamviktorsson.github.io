@@ -1,0 +1,1 @@
+main.svelte-2z8l83{width:100vw;height:100vh;display:flex;place-items:center;place-content:center;flex-direction:column;gap:40px}img.svelte-2z8l83{width:240px;height:240px;border-radius:50%;animation:svelte-2z8l83-rotation var(--duration) 1 ease-in-out;animation-fill-mode:forwards}@keyframes svelte-2z8l83-rotation{0%{transform:rotate(var(--from))}to{transform:rotate(var(--to))}}
