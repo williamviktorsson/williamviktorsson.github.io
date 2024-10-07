@@ -255,12 +255,12 @@
 							oncurrent={async () => {
 								showcode = true
 								await code1.update`class Person {
-	  String name;
-	  Person({required this.name});
-	}
-	
-	// Skapa ett objekt
-	Person alice = Person(name: "Alice");`
+	String name;
+	Person({required this.name});
+}
+
+// Skapa ett objekt
+Person alice = Person(name: "Alice");`
 							}}
 						>
 							Klasser definerar datastruktur och beteende
@@ -270,24 +270,24 @@
 							oncurrent={async () => {
 								showcode = true
 								await code1.update`class Person {
-	  String name;
-	  Person({required this.name});
-	}
-	
-	// Skapa ett objekt
-	Person alice = Person(name: "Alice");
-	
-	// Arv
-	class Vehicle {
-	  String regnr;
-	  Vehicle(required this.regnr);
-	}
-	
-	// Komposition
-	class Car extends Vehicle {
-	  Person owner;
-	  Car({required String regnr, required this.owner}) : super(regnr: regnr);
-	}`
+	String name;
+	Person({required this.name});
+}
+
+// Skapa ett objekt
+Person alice = Person(name: "Alice");
+
+// Arv
+class Vehicle {
+	String regnr;
+	Vehicle(required this.regnr);
+}
+
+// Komposition
+class Car extends Vehicle {
+	Person owner;
+	Car({required String regnr, required this.owner}) : super(regnr: regnr);
+}`
 							}}
 						>
 							Arv möjliggör kodåteranvändning
@@ -308,17 +308,17 @@
 							oncurrent={async () => {
 								showcode = true
 								await code1.update`class BankAccount {
-	  String _accountNumber; // Privat variabel
-	  double _balance = 0;
-	
-	  BankAccount(this._accountNumber);
-	
-	  void deposit(double amount) {
+	String _accountNumber; // Privat variabel
+	double _balance = 0;
+
+	BankAccount(this._accountNumber);
+
+	void deposit(double amount) {
 		_balance += amount;
-	  }
-	
-	  double get balance => _balance; // Publik getter
-	}`
+	}
+
+	double get balance => _balance; // Publik getter
+}`
 							}}
 						>
 							Privata variabler och publika metoder
@@ -341,20 +341,20 @@
 								await code1.update`// Abstrakt klass kan ha metodimplementationer men kan inte instansieras.
 // Endast konkreta klasser som ärver från Repository kan skapas.
 abstract class Repository<T> {
-  List<T> _items = [];
+	List<T> _items = [];
 
-  void add(T item) => _items.add(item);
+	void add(T item) => _items.add(item);
 
-  List<T> getAll() => _items;
+	List<T> getAll() => _items;
 
-  void update(T item, T newItem) {
-    var index = _items.indexWhere((element) => element == item);
-    _items[index] = newItem;
-  }
+	void update(T item, T newItem) {
+		var index = _items.indexWhere((element) => element == item);
+		_items[index] = newItem;
+	}
 
-  void delete(T item) => _items.remove(item);
+	void delete(T item) => _items.remove(item);
 }
-	
+
 // lagrar och tar endast emot Person-objekt
 class PersonRepository extends Repository<Person> {}
 
@@ -362,7 +362,7 @@ class PersonRepository extends Repository<Person> {}
 class VehicleRepository extends Repository<Vehicle> {}
 
 // Notera implementationen återanvänds. Ingen repeterad kod :-)
-	`
+`
 							}}
 						>
 							Generics för flexibel och typesäker kod
@@ -423,12 +423,12 @@ class VehicleRepository extends Repository<Vehicle> {}
 							oncurrent={async () => {
 								showcode = true
 								await code2.update`void printArea(Shape shape) {
-	  print("Area: " + shape.getArea());
-	}
-	
-	// Användning
-	printArea(Circle(5));
-	printArea(Square(4));`
+	print("Area: " + shape.getArea());
+}
+
+// Användning
+printArea(Circle(5));
+printArea(Square(4));`
 							}}
 						>
 							Subklasser kan användas som om de vore av föräldraklassens typ
@@ -453,10 +453,10 @@ class VehicleRepository extends Repository<Vehicle> {}
 								showcode = true
 								await code2.update`class PersonRepository extends Repository<Person> {
 	static final PersonRepository _instance = PersonRepository._internal();
-	
+
 	// privat konstruktor förhindrar att fler objekt av klassen skapas
 	PersonRepository._internal();
-	
+
 	static PersonRepository get instance => _instance;
 }
 
@@ -472,14 +472,14 @@ PersonRepository.instance.add(Person(name: "Bob"));`
 							oncurrent={async () => {
 								showcode = true
 								await code2.update`class PersonRepository extends Repository<Person> {
-  static final PersonRepository _instance = PersonRepository._internal();
+	static final PersonRepository _instance = PersonRepository._internal();
 
-  // privat konstruktor förhindrar att fler objekt av klassen skapas
-  PersonRepository._internal();
+	// privat konstruktor förhindrar att fler objekt av klassen skapas
+	PersonRepository._internal();
 
-  factory PersonRepository() => _instance;
+	factory PersonRepository() => _instance;
 }
-  
+
 // Användning
 PersonRepository().add(Person(name: "Bob"));`
 							}}
@@ -537,18 +537,18 @@ PersonRepository().add(Person(name: "Bob"));`
 							oncurrent={async () => {
 								showcode = true
 								await code3.update`// Synkron kod (kan blockera UI)
-	void fetchParkingData() {
-	  var data = readLargeDataFile(); // Tar lång tid
-	  processData(data);
-	  updateUI();
-	}
-	
-	// Asynkron kod (non-blocking)
-	Future<void> fetchParkingDataAsync() async {
-	  var data = await readLargeDataFileAsync();
-	  processData(data);
-	  updateUI();
-	}`
+void fetchParkingData() {
+	var data = readLargeDataFile(); // Tar lång tid
+	processData(data);
+	updateUI();
+}
+
+// Asynkron kod (non-blocking)
+Future<void> fetchParkingDataAsync() async {
+	var data = await readLargeDataFileAsync();
+	processData(data);
+	updateUI();
+}`
 							}}
 						>
 							Förhindrar blockering av användaregränssnitt
@@ -564,25 +564,25 @@ PersonRepository().add(Person(name: "Bob"));`
 							oncurrent={async () => {
 								showcode = true
 								await code3.update`// HTTP-förfrågan för att hämta parkeringsplatser
-	Future<List<ParkingSpot>> fetchParkingSpots() async {
-	  final response = await http.get('https://api.parkering.se/spots');
-	  if (response.statusCode == 200) {
+Future<List<ParkingSpot>> fetchParkingSpots() async {
+	final response = await http.get('https://api.parkering.se/spots');
+	if (response.statusCode == 200) {
 		// Parsera JSON och returnera lista av parkeringsplatser
 		return parseSpots(response.body);
-	  } else {
+	} else {
 		throw Exception('Kunde inte hämta parkeringsplatser');
-	  }
 	}
-	
+}
+
 	// Användning
-	void updateParkingSpots() async {
-	  try {
+void updateParkingSpots() async {
+	try {
 		List<ParkingSpot> spots = await fetchParkingSpots();
 		updateUI(spots);
-	  } catch (e) {
+	} catch (e) {
 		showError('Fel vid hämtning av parkeringsplatser');
-	  }
-	}`
+	}
+}`
 							}}
 						>
 							Hantera nätverksförfrågningar (HTTP)
@@ -592,26 +592,26 @@ PersonRepository().add(Person(name: "Bob"));`
 							oncurrent={async () => {
 								showcode = true
 								await code3.update`// Databasoperation för att spara en parkering
-	Future<void> saveParkingToDB(Parking parking) async {
-	  final db = await openDatabase('parking.db');
-	  await db.insert('parkings', parking.toMap());
-	  await db.close();
-	}
-	
-	// Användning
-	void startParking(Vehicle vehicle, ParkingSpot spot) async {
-	  final parking = Parking(
+Future<void> saveParkingToDB(Parking parking) async {
+	final db = await openDatabase('parking.db');
+	await db.insert('parkings', parking.toMap());
+	await db.close();
+}
+
+// Användning
+void startParking(Vehicle vehicle, ParkingSpot spot) async {
+	final parking = Parking(
 		vehicle: vehicle,
 		spot: spot,
 		startTime: DateTime.now()
-	  );
-	  try {
+	);
+	try {
 		await saveParkingToDB(parking);
 		showMessage('Parkering påbörjad');
-	  } catch (e) {
+	} catch (e) {
 		showError('Kunde inte spara parkeringen');
-	  }
-	}`
+	}
+}`
 							}}
 						>
 							Utföra databasoperationer
@@ -632,25 +632,25 @@ PersonRepository().add(Person(name: "Bob"));`
 							oncurrent={async () => {
 								showcode = true
 								await code3.update`Future<ParkingSpot> findAvailableSpot() async {
-	  // Simulerar en tidskrävande operation
-	  await Future.delayed(Duration(seconds: 2));
-	  return ParkingSpot(id: '1', isAvailable: true);
-	}
-	
-	// Användning med await
-	void parkCar() async {
-	  print('Letar efter ledig plats...');
-	  ParkingSpot spot = await findAvailableSpot();
-	  print('Plats hittad: ' + spot.id);
-	}
-	
-	// Användning med .then()
-	void parkCarThen() {
-	  print('Letar efter ledig plats...');
-	  findAvailableSpot().then((spot) {
+	// Simulerar en tidskrävande operation
+	await Future.delayed(Duration(seconds: 2));
+	return ParkingSpot(id: '1', isAvailable: true);
+}
+
+// Användning med await
+void parkCar() async {
+	print('Letar efter ledig plats...');
+	ParkingSpot spot = await findAvailableSpot();
+	print('Plats hittad: ' + spot.id);
+}
+
+// Användning med .then()
+void parkCarThen() {
+	print('Letar efter ledig plats...');
+	findAvailableSpot().then((spot) {
 		print('Plats hittad: ' + spot.id);
-	  });
-	}`
+	});
+}`
 							}}
 						>
 							Future, async och await
@@ -660,28 +660,28 @@ PersonRepository().add(Person(name: "Bob"));`
 							oncurrent={async () => {
 								showcode = true
 								await code3.update`Future<List<Vehicle>> fetchParkedVehicles() async {
-	  // Simulerar hämtning från databas
-	  await Future.delayed(Duration(seconds: 1));
-	  return [
+	// Simulerar hämtning från databas
+	await Future.delayed(Duration(seconds: 1));
+	return [
 		Vehicle(registrationNumber: 'ABC123', type: 'Car'),
 		Vehicle(registrationNumber: 'XYZ789', type: 'Motorcycle')
-	  ];
-	}
-	
-	Stream<Vehicle> streamParkedVehicles() async* {
-	  List<Vehicle> vehicles = await fetchParkedVehicles();
-	  for (var vehicle in vehicles) {
+	];
+}
+
+Stream<Vehicle> streamParkedVehicles() async* {
+	List<Vehicle> vehicles = await fetchParkedVehicles();
+	for (var vehicle in vehicles) {
 		await Future.delayed(Duration(seconds: 1)); // Simulerar realtidsuppdateringar
 		yield vehicle;
-	  }
 	}
-	
-	// Användning
-	void monitorParking() {
-	  streamParkedVehicles().listen((vehicle) {
+}
+
+// Användning
+void monitorParking() {
+	streamParkedVehicles().listen((vehicle) {
 		print('Parkerat fordon: ' + vehicle.registrationNumber);
-	  });
-	}`
+	});
+}`
 							}}
 						>
 							Streams för kontinuerliga uppdateringar
@@ -702,27 +702,27 @@ PersonRepository().add(Person(name: "Bob"));`
 							oncurrent={async () => {
 								showcode = true
 								await code3.update`Future<void> endParking(String registrationNumber) async {
-	  try {
+	try {
 		final parking = await findActiveParking(registrationNumber);
 		parking.endTime = DateTime.now();
 		await updateParkingInDB(parking);
 		print('Parkering avslutad för ' + registrationNumber);
-	  } catch (e) {
+	} catch (e) {
 		print('Fel vid avslutning av parkering: $e');
-	  }
 	}
-	
-	Future<Parking> findActiveParking(String registrationNumber) async {
-	  // Simulerar databassökning
-	  await Future.delayed(Duration(seconds: 1));
-	  throw Exception('Ingen aktiv parkering hittad');
-	}
-	
-	Future<void> updateParkingInDB(Parking parking) async {
-	  // Simulerar databasuppdatering
-	  await Future.delayed(Duration(seconds: 1));
-	  print('Parkering uppdaterad i databasen');
-	}`
+}
+
+Future<Parking> findActiveParking(String registrationNumber) async {
+	// Simulerar databassökning
+	await Future.delayed(Duration(seconds: 1));
+	throw Exception('Ingen aktiv parkering hittad');
+}
+
+Future<void> updateParkingInDB(Parking parking) async {
+	// Simulerar databasuppdatering
+	await Future.delayed(Duration(seconds: 1));
+	print('Parkering uppdaterad i databasen');
+}`
 							}}
 						>
 							Try-catch med async-await
@@ -830,16 +830,16 @@ PersonRepository().add(Person(name: "Bob"));`
 							oncurrent={async () => {
 								showcode = true
 								await code.update`// Klient (mobilapp)
-						Future<void> getAndDisplayAvailableSpots() async {
-				
-							final response = await http.get('https://parkering-api.se/spots/available');
-							final List<dynamic> data = json.decode(response.body);
-							final spots = data.map((json) => ParkingSpot.fromJson(json)).toList();
-							displaySpots(spots);
+Future<void> getAndDisplayAvailableSpots() async {
 
-						}
-						
-					`
+	final response = await http.get('https://parkering-api.se/spots/available');
+	final List<dynamic> data = json.decode(response.body);
+	final spots = data.map((json) => ParkingSpot.fromJson(json)).toList();
+	displaySpots(spots);
+
+}
+
+`
 							}}
 						>
 							Klient: Enheten som begär data eller tjänster (t.ex. webbläsare, mobilapp)
@@ -853,24 +853,24 @@ PersonRepository().add(Person(name: "Bob"));`
 								oncurrent={async () => {
 									showcode = true
 									await code.update`// Klient (mobilapp)
-							Future<void> getAndDisplayAvailableSpots() async {
-					
-								final response = await http.get('https://parkering-api.se/spots/available');
-								final List<dynamic> data = json.decode(response.body);
-								final spots = data.map((json) => ParkingSpot.fromJson(json)).toList();
-								displaySpots(spots);
+Future<void> getAndDisplayAvailableSpots() async {
 
-							}
-							
-							// Server
-							app.get('/spots/available', (req, res) async {
-							  try {
-								final spots = await database.queryAvailableSpots();
-								res.json(spots);
-							  } catch (e) {
-								res.status(500).json({'error': 'Databasfel: $e'});
-							  }
-							});`
+	final response = await http.get('https://parkering-api.se/spots/available');
+	final List<dynamic> data = json.decode(response.body);
+	final spots = data.map((json) => ParkingSpot.fromJson(json)).toList();
+	displaySpots(spots);
+
+}
+
+// Server
+app.get('/spots/available', (req, res) async {
+	try {
+		final spots = await database.queryAvailableSpots();
+		res.json(spots);
+	} catch (e) {
+		res.status(500).json({'error': 'Databasfel: $e'});
+	}
+});`
 								}}
 							>
 								Svarar på requests från klienter
@@ -880,34 +880,34 @@ PersonRepository().add(Person(name: "Bob"));`
 								oncurrent={async () => {
 									showcode = true
 									await code.update`// Klient (mobilapp)
-						Future<void> getAndDisplayAvailableSpots() async {
-				
-							final response = await http.get('https://parkering-api.se/spots/available');
-							final List<dynamic> data = json.decode(response.body);
-							final spots = data.map((json) => ParkingSpot.fromJson(json)).toList();
-							displaySpots(spots);
+Future<void> getAndDisplayAvailableSpots() async {
 
-						}
-						
-						// Server
-						app.get('/spots/available', (req, res) async {
-						  try {
-							final spots = await database.queryAvailableSpots();
-							res.json(spots);
-						  } catch (e) {
-							res.status(500).json({'error': 'Databasfel: $e'});
-						  }
-						});
-						
-						// Databasoperation (förenklas här)
-						Future<List<ParkingSpot>> queryAvailableSpots() async {
-						  // Simulerar databasanrop
-						  await Future.delayed(Duration(milliseconds: 100));
-						  return [
-							ParkingSpot('A1', 'Norra Parkeringen', 25.0, true),
-							ParkingSpot('B2', 'Södra Parkeringen', 20.0, false),
-						  ];
-						}`
+	final response = await http.get('https://parkering-api.se/spots/available');
+	final List<dynamic> data = json.decode(response.body);
+	final spots = data.map((json) => ParkingSpot.fromJson(json)).toList();
+	displaySpots(spots);
+
+}
+
+// Server
+app.get('/spots/available', (req, res) async {
+	try {
+		final spots = await database.queryAvailableSpots();
+		res.json(spots);
+	} catch (e) {
+		res.status(500).json({'error': 'Databasfel: $e'});
+	}
+});
+
+// Databasoperation (förenklas här)
+Future<List<ParkingSpot>> queryAvailableSpots() async {
+	// Simulerar databasanrop
+	await Future.delayed(Duration(milliseconds: 100));
+	return [
+		ParkingSpot('A1', 'Norra Parkeringen', 25.0, true),
+		ParkingSpot('B2', 'Södra Parkeringen', 20.0, false),
+	];
+}`
 								}}
 							>
 								Lagrar och hanterar data
@@ -945,19 +945,19 @@ PersonRepository().add(Person(name: "Bob"));`
 							oncurrent={async () => {
 								showcode = true
 								await code.update`void main() {
-  startServer(port: 8080);
-  
-  handleRequest('/parking/available', (request) {
-    var availableSpots = database.getAvailableSpots();
-    return Response.json(availableSpots);
-  });
-  
-  handleRequest('/parking/start', (request) {
-    var spotId = request.data['spotId'];
-    var vehicleId = request.data['vehicleId'];
-    database.startParking(spotId, vehicleId);
-    return Response.ok('Parkering påbörjad');
-  });
+	startServer(port: 8080);
+
+	handleRequest('/parking/available', (request) {
+		var availableSpots = database.getAvailableSpots();
+		return Response.json(availableSpots);
+	});
+
+	handleRequest('/parking/start', (request) {
+		var spotId = request.data['spotId'];
+		var vehicleId = request.data['vehicleId'];
+		database.startParking(spotId, vehicleId);
+		return Response.ok('Parkering påbörjad');
+	});
 }`
 							}}
 						>
@@ -983,14 +983,14 @@ PersonRepository().add(Person(name: "Bob"));`
 								showcode = true
 								await code.update`// Asynkron hantering av förfrågan
 Future<void> handleParkingRequest(Request request) async {
-  var spotId = request.data['spotId'];
-  var vehicleId = request.data['vehicleId'];
-  
-  // Asynkron databasoperation
-  await database.startParking(spotId, vehicleId);
-  
-  // Servern kan hantera andra förfrågningar medan den väntar
-  return Response.ok('Parkering påbörjad');
+	var spotId = request.data['spotId'];
+	var vehicleId = request.data['vehicleId'];
+
+	// Asynkron databasoperation
+	await database.startParking(spotId, vehicleId);
+
+	// Servern kan hantera andra förfrågningar medan den väntar
+	return Response.ok('Parkering påbörjad');
 }`
 							}}
 						>
@@ -1024,7 +1024,8 @@ Future<void> handleParkingRequest(Request request) async {
 		<Title title="Tack för idag!"></Title>
 		<Content>
 			<div class="mt-60 text-center">
-				Det var allt för idag! Nästa vecka börjar det bli mer nytt innehåll och mer komplexa koncept!
+				Det var allt för idag! Nästa vecka börjar det bli mer nytt innehåll och mer komplexa
+				koncept!
 			</div>
 		</Content>
 	</Slide>
