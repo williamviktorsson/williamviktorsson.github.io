@@ -173,6 +173,18 @@
 					<li class="fragment">Förslag 1: Navigera till projektet med <code>cd</code></li>
 					<li class="fragment">Förslag 2: Öppna i VSCode</li>
 				</ul>
+				<li class="fragment">Initiera ditt git-projekt och lägg till alla filer</li>
+				<ul>
+					<li style="list-style: none;" class="fragment">
+						<code>git init</code>
+					</li>
+					<li style="list-style: none;" class="fragment">
+						<code>git add .</code>
+					</li>
+					<li style="list-style: none;" class="fragment">
+						<code>git commit -m "first commit"</code>
+					</li>
+				</ul>
 				<li class="fragment">Klistra in koden du kopierat:</li>
 				<ul>
 					<li style="list-style: none;" class="fragment">
