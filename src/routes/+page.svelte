@@ -22,7 +22,7 @@
 		<Content>
 			<ol>
 				{#each Array(slides) as _, index}
-					<li><a href="/{index+1}/#/">Föreläsning {index+1}</a></li>
+					<li><a href="/{index+1}">Föreläsning {index+1}</a></li>
 				{/each}
 			</ol>
 		</Content>
