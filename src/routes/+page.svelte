@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Presentation, Slide, Code } from '@animotion/core'
-	import Front from '$lib/front.svelte'
 	import Title from '$lib/title.svelte'
 	import Content from '$lib/content.svelte'
 
@@ -20,11 +19,14 @@
 	<Slide>
 		<Title title="Föreläsningar"></Title>
 		<Content>
-			<ol>
-				{#each Array(slides) as _, index}
-					<li><a href="/{index+1}">Föreläsning {index+1}</a></li>
-				{/each}
-			</ol>
+			<div class="flex flex-col justify-between h-full">
+				<ol>
+					{#each Array(slides) as _, index}
+						<li><a href="/{index + 1}">Föreläsning {index + 1}</a></li>
+					{/each}
+				</ol>
+				<li><a href="/tutoring">Handledning</a></li>
+			</div>
 		</Content>
 	</Slide>
 </Presentation>
