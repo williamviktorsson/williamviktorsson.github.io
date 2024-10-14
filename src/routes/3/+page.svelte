@@ -499,7 +499,7 @@ class DataRepository {
 				<li class="fragment">Testa testa servern med:</li>
 				<ul>
 					<li style="list-style: none;" class="fragment">
-						<code>dart run {'<projektnamn>:server'}</code>
+						<code>dart test</code>
 					</li>
 				</ul>
 				<li class="fragment">Skapa ett nytt dart-projekt för att utöka ditt CLI:</li>
