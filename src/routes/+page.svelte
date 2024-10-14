@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Presentation, Slide, Code } from '@animotion/core'
+	import { Presentation, Slide } from '@animotion/core'
 	import Title from '$lib/title.svelte'
 	import Content from '$lib/content.svelte'
 
-	let slides = 2
+	let slides = 3
 </script>
 
 <Presentation
