@@ -281,9 +281,12 @@ router.delete('/bags/<id>', deleteBagHandler); // update specific bag`
 							>https://github.com/objectbox/objectbox-c/releases</a
 						> och välj senaste release för din plattform.
 					</li>
+					<ul>
+						<li class="fragment">Välj filen som heter objectbox-operativsystem. Alltså inte dem som innehåller sync eller jni</li>
+					</ul>
 					<li class="fragment">
-						Unzip och placera <code>objectbox.dll</code> och <code>objectbox.lib</code> direkt under
-						<code>/lib</code> i projektet som kommer köra din objectbox-kod
+						Unzip och placera innehållet i <code>/lib</code> direkt under
+						<code>/lib</code> i serverprojektet.
 					</li>
 				</ul>
 				<li class="fragment">
