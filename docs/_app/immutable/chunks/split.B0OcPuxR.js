@@ -1,0 +1,1 @@
+import{f as s,t as i,g as d}from"./disclose-version.BmIQt7z6.js";import{s as l}from"./render.DlfULs-I.js";import{d as p}from"./content.DTFQcm-x.js";var f=i('<div class="grid grid-cols-2 h-full gap-16"><!></div>');function c(o,r){var a=f(),t=d(a);l(t,p(r),{}),s(o,a)}export{c as S};

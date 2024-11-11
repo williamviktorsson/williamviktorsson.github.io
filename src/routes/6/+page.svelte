@@ -418,7 +418,7 @@
 			<ol>
 				<li class="fragment">Grundsten</li>
 				<ul>
-					<li class="fragment">Allt i Flutter är en <code>Widget</code></li>
+					<li class="fragment">Allt visuellt i Flutter är en <code>Widget</code></li>
 					<li class="fragment">Byggstenar för användargränssnittet</li>
 					<li class="fragment">Använd existerande eller bygg egna</li>
 					<li class="fragment">
@@ -433,7 +433,7 @@
 				</ul>
 				<li class="fragment">Egenskaper</li>
 				<ul>
-					<li class="fragment">Widgetar har egenskaper (properties)</li>
+					<li class="fragment">Widgetar har egenskaper (properties/klassvariabler)</li>
 					<li class="fragment">Bestämmer widgetens utseende och beteende</li>
 					<li class="fragment">
 						Kan finnas en del <code>defaults</code> som du kan välja att själv konfigurera
@@ -544,6 +544,9 @@
 				<ul>
 					<li class="fragment">Varje widget har sin egen BuildContext</li>
 					<li class="fragment">Widgets skapar och ger sina barn en ny specifik BuildContext</li>
+					<ul>
+						<li class="fragment">Sker automagiskt</li>
+					</ul>
 				</ul>
 				<li class="fragment">Användningsfall</li>
 				<ul>
@@ -564,12 +567,6 @@
 					<li class="fragment">
 						Visa en <code>Toast/Snackbar/Notis</code> som dyker upp i widgeten eller på hela skärmen.
 					</li>
-					<ul>
-						<li class="fragment">
-							Via vår BuildContext får den typen av funktionalitet ut information om var i
-							widget-trädet den kan placera en notis.
-						</li>
-					</ul>
 				</ul>
 			</ol>
 		</Content>
@@ -640,6 +637,32 @@
 	</Slide>
 
 	<Slide>
+		<Title title="Om inloggning/autentisering"></Title>
+		<Content>
+			<ul>
+				<li class="fragment">Förenklad lösning för denna uppgift! 🎯</li>
+				<ul>
+					<li class="fragment">Ingen kryptering, salt, hash eller session tokens</li>
+					<li class="fragment">Ingen "äkta" säkerhet krävs</li>
+				</ul>
+				<li class="fragment">Implementera så här:</li>
+				<ul>
+					<li class="fragment">Registrering = skapa en person i databasen</li>
+					<li class="fragment">Inloggning = kolla om personen finns</li>
+					<li class="fragment">
+						Ska <strong>se ut</strong> som ett inloggningsflöde för användaren
+					</li>
+				</ul>
+				<li class="fragment">Riktig autentisering kommer senare! 🔒</li>
+				<ul>
+					<li class="fragment">Vi implementerar Firebase Auth i senare uppgift</li>
+					<li class="fragment">Då kopplar vi Firebase-tokens till era personer</li>
+				</ul>
+			</ul>
+		</Content>
+	</Slide>
+
+	<Slide>
 		<Title title="Kom igång denna vecka"></Title>
 		<Content>
 			<ol>
@@ -669,7 +692,9 @@
 				<li class="fragment">v.49: State management och responsive design</li>
 				<li class="fragment">v.50: Examination</li>
 				<hr class="fragment" />
-				<li class="fragment"><strong>Fullständig uppgiftsbeskrivning finns på Canvas</strong></li>
+				<li class="fragment">
+					<strong>Fullständig uppgiftsbeskrivning finns på kurswebben</strong>
+				</li>
 				<li class="fragment">Fokusera på att få grundstrukturen på plats denna vecka! 🎯</li>
 			</ul>
 		</Content>
