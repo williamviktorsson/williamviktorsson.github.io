@@ -37,32 +37,10 @@
 		<Content>
 			<ol>
 				<li class="fragment">Testing med bloc_test & mockito</li>
-				<li class="fragment">Sealed Classes för typsäker State-hantering</li>
 				<li class="fragment">HydratedBloc för State-persistens</li>
-				<li class="fragment">ReplayBloc för tidslinje</li>
+				<li class="fragment">ReplayBloc för historik av states + redo/undo</li>
 				<li class="fragment">Optimistiska uppdateringar</li>
 			</ol>
-		</Content>
-	</Slide>
-
-	<Slide>
-		<Title title="Testing med bloc_test & mockito"></Title>
-		<Content>
-			<ul>
-				<li class="fragment">bloc_test - specialiserat testramverk för BLoCs</li>
-				<li class="fragment">mocktail - skapar mock-objekt för deterministiska tester</li>
-				<li class="fragment">Testar sekvenser av states vid events</li>
-				<li class="fragment">Verifierar interaktioner med dependencies</li>
-				<li class="fragment">Viktiga koncept:</li>
-
-				<ul>
-					<li class="fragment"><code>setUp</code> - förbereder testmiljön</li>
-					<li class="fragment"><code>seed</code> - sätter initial state för testet</li>
-					<li class="fragment"><code>act</code> - utför handlingen som ska testas</li>
-					<li class="fragment"><code>expect</code> - verifierar state-sekvensen</li>
-					<li class="fragment"><code>verify</code> - kontrollerar interaktioner</li>
-				</ul>
-			</ul>
 		</Content>
 	</Slide>
 
@@ -80,31 +58,34 @@
 						class="fragment"
 						oncurrent={async () => {
 							showcode = true
-							await code5.update`blocTest<ItemsBloc, ItemsState>(
+							await code5.update`class MockItemRepository extends Mock implements ItemRepository {}
+
+itemRepository = MockItemRepository();
+
+blocTest<ItemsBloc, ItemsState>(
 	'skapar item och uppdaterar listan',
 	
 	// Förbered mock-svar
 	setUp: () {
+		// when(...) kommer från Mocktail
 		when(() => itemRepository.create(any()))
 		.thenAnswer((_) async => newItem);
 	},
-	
-	// Skapa bloc
-	build: () => ItemsBloc(itemRepository: itemRepository,)),
 
-	// Förbered initial state
-	seed: () => ItemsLoaded([existingItem]),
-	
-	// Utför handling
-	act: (bloc) => bloc.add(CreateItem(newItem)),
-	
+	build: () => ItemsBloc(itemRepository: itemRepository,)),	// Skapa bloc
+
+	seed: () => ItemsLoaded([existingItem]),	// Förbered initial state
+
+	act: (bloc) => bloc.add(CreateItem(newItem)),	// Utför handling
+
 	// Verifiera state-sekvens
 	expect: () => [
-		ItemsLoaded([existingItem, newItem]),
+		ItemsLoaded([existingItem, newItem]), 	
 	],
-	
+
 	// Verifiera repository-anrop
 	verify: (_) {
+		// verify(...) kommer från Mocktail
 		verify(() => itemRepository.create(newItem))
 		.called(1);
 	},
@@ -126,69 +107,6 @@
 						lang="dart"
 						theme="catppuccin-frappe"
 						bind:this={code5}
-						options={{
-							duration: 600,
-							stagger: 15,
-							containerStyle: false,
-							lineNumbers: true
-						}}
-					/>
-				</div>
-			</Split>
-		</Content>
-	</Slide>
-
-	<Slide
-		in={async () => {
-			showcode = false
-			await code1.update``
-		}}
-	>
-		<Title title="Sealed Classes för State"></Title>
-		<Content>
-			<Split>
-				<ul>
-					<li
-						class="fragment"
-						oncurrent={async () => {
-							showcode = true
-							await code1.update`sealed class ItemsState extends Equatable {
-	const ItemsState();
-}
-
-final class ItemsInitial extends ItemsState {}
-final class ItemsLoading extends ItemsState {}
-final class ItemsLoaded extends ItemsState {
-	final List<Item> items;
-	const ItemsLoaded(this.items);
-}
-
-// Användning med pattern matching
-return switch (state) {
-	ItemsInitial() => const LoadingView(),
-	ItemsLoading() => const LoadingView(),
-	ItemsLoaded(:final items) => ItemListView(items),
-	ItemsError(:final message) => ErrorView(message),
-};`
-						}}
-					>
-						Sealed classes
-					</li>
-					<li class="fragment">Fördelar:</li>
-
-					<ul>
-						<li class="fragment">uttömmande pattern matching</li>
-						<li class="fragment">Typsäkerhet vid compile-time</li>
-						<li class="fragment">Bättre kodkomplettering</li>
-					</ul>
-					<li class="fragment">Perfect för State-hantering</li>
-				</ul>
-				<div class="enter" hidden={!showcode}>
-					<Code
-						code={``}
-						lang="dart"
-						theme="catppuccin-frappe"
-						bind:this={code1}
 						options={{
 							duration: 600,
 							stagger: 15,
@@ -238,13 +156,16 @@ return switch (state) {
 						Automatisk State-persistens
 					</li>
 					<li class="fragment">Sparar state mellan sessioner</li>
+					<li class="fragment">Perfekt för:</li>
+					<ul>
+						<li>Inloggningsstatus</li>
+						<li>Användarinställningar</li>
+						<li>Vadsomhelst som du vill cache:a lokalt på enheten</li>
+					</ul>
+
 					<li class="fragment">
-						Perfekt för:
-						<ul>
-							<li>Inloggningsstatus</li>
-							<li>Användarinställningar</li>
-							<li>Cache</li>
-						</ul>
+						Kan krävas att komplext data serialiseras m.h.a. json.encode/json.decode om du t.ex.
+						vill lagra en lista json-objekt
 					</li>
 				</ul>
 				<div class="enter" hidden={!showcode}>
@@ -302,6 +223,11 @@ cubit.clearHistory();    // Rensar historiken`
 					<ul>
 						<li class="fragment">Undo/redo funktionalitet</li>
 						<li class="fragment">Replay av händelser</li>
+						<li class="fragment">Perfekt för navigering</li>
+						<li class="fragment">Perfekt för något som hanterar många lokala ändringar</li>
+						<ul>
+							<li class="fragment">t.ex. en pixel-art redigerare eller app för anteckningar</li>
+						</ul>
 					</ul>
 				</ul>
 				<div class="enter" hidden={!showcode}>
