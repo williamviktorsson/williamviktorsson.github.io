@@ -3,7 +3,7 @@
 	import Title from '$lib/title.svelte'
 	import Content from '$lib/content.svelte'
 
-	let slides = 11
+	let slides = 12
 </script>
 
 <Presentation

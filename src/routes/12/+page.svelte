@@ -33,23 +33,92 @@
 	<Front></Front>
 
 	<Slide>
-		<Title title="Dagens agenda"></Title>
+		<Title title="Uppgift 5: Firebase Integration"></Title>
 		<Content>
-			<ol>
-				<li class="fragment"></li>
-				<li class="fragment"></li>
-				<li class="fragment"></li>
-
-				<li class="fragment"></li>
 				<ul>
-					<li class="fragment"></li>
-					<li class="fragment"></li>
-					<li class="fragment"></li>
-					<li class="fragment"></li>
-					<li class="fragment"></li>
-					<li class="fragment"></li>
+					<li class="fragment">Migrera från HTTP server till Firebase som backend</li>
+					<li class="fragment">Krav för godkänt (G):</li>
+					<ul>
+						<li class="fragment">Firestore repositories för all data</li>
+						<li class="fragment">Anpassa BLoCs för Firebase API</li>
+						<li class="fragment">Email/lösenord autentisering</li>
+					</ul>
+					<li class="fragment">Extra för VG (minst 1):</li>
+					<ul>
+						<li class="fragment">Realtidsuppdateringar</li>
+						<li class="fragment">Tredjepartsautentisering (Google, GitHub etc)</li>
+						<li class="fragment">Cloud Functions för att koppla Firebase Auth med Firebase Firestore</li>
+					</ul>
 				</ul>
-			</ol>
+		</Content>
+	</Slide>
+	
+	<Slide>
+		<Title title="Vad är Firebase?"></Title>
+		<Content>
+				<ul>
+					<li class="fragment">Googles plattform för app-utveckling</li>
+					<li class="fragment">Backend-as-a-Service (BaaS) lösning</li>
+					<li class="fragment">Ersätter behovet av egen backend</li>
+					<li class="fragment">Huvudkomponenter vi kommer använda:</li>
+					<ul>
+						<li class="fragment">Firebase Authentication</li>
+						<li class="fragment">Cloud Firestore (NoSQL, dokumentdatabas, lagrat som json)</li>
+					</ul>
+				</ul>
+		</Content>
+	</Slide>
+	
+	<Slide>
+		<Title title="Dagens Demo - Setup"></Title>
+		<Content>
+				<ul>
+					<li class="fragment">Skapa Firebase projekt</li>
+					<li class="fragment">Konfigurera Firestore Database (EU region)</li>
+					<li class="fragment">Använda Firebase CLI</li>
+					<li class="fragment">Skapa Firebase repositories</li>
+					<li class="fragment">Konfigurera Flutter projekt för Firebase</li>
+					<li class="fragment">Allt för godkänt som rör Firestore(databasen), nästa vecka authenticering</li>
+
+				</ul>
+		</Content>
+	</Slide>
+	
+	<Slide>
+		<Title title="Migration till Firebase"></Title>
+		<Content>
+				<ul>
+					<li class="fragment">Byt ut HTTP repositories mot Firebase repositories</li>
+					<li class="fragment">Viktiga ändringar:</li>
+					<ul>
+						<li class="fragment">ID:n blir strings istället för int</li>
+						<li class="fragment">Firestore anrop istället för HTTP</li>
+						<li class="fragment">Realtidsuppdateringar möjliga, men inte idag, se länkad dokumentation i uppgift</li>
+					</ul>
+					<li class="fragment">Samma BLoC-struktur kan behållas</li>
+				</ul>
+		</Content>
+	</Slide>
+	
+	<Slide>
+		<Title title="Att tänka på"></Title>
+		<Content>
+				<ul>
+					<li class="fragment">Test mode på databasen = alla med config kan läsa/skriva</li>
+					<li class="fragment">iOS/macOS config endast om du har Mac (när du konfigurerar firebase)</li>
+					<li class="fragment">Viktigt med rätt application/bundle ID för iOS/Android</li>
+					<ul>
+						<li class="fragment">finns i källkoden för android i <code>build.gradle</code> och läses i Xcode på Mac</li>
+					</ul>
+					<li class="fragment">Initiera Firebase vid app-start</li>
+				</ul>
+		</Content>
+	</Slide>
+
+	<Slide>
+		<Title title="Demo time?"></Title>
+		<Content>
+			<div class="mt-60 text-center">Demo time!</div>
 		</Content>
 	</Slide>
 
