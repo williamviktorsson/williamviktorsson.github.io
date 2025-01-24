@@ -36,17 +36,14 @@
 		<Title title="Firebase Autentisering: Utmaningar"></Title>
 		<Content>
 			<ol>
-				<li class="fragment">Förstå kärnproblemet</li>
-				<li class="fragment">Firebase Autentisering vs Databaslagring</li>
+				<li class="fragment">Firebase Autentisering & Firebase Firestore</li>
 				<li class="fragment">Varför vi behöver koppla systemen</li>
 				<li class="fragment">Lösningsmetoder</li>
 				<ul>
 					<li class="fragment">Firebase Functions (Serverlös)</li>
 					<li class="fragment">Applikationsnivå-registrering</li>
 					<li class="fragment">För- och nackdelar med varje metod</li>
-					<li class="fragment">Implementeringsöverväganden</li>
-					<li class="fragment">Best practices</li>
-					<li class="fragment">Praktiska användningsfall</li>
+
 				</ul>
 			</ol>
 		</Content>
@@ -68,7 +65,7 @@
 		<Title title="Varför koppla ihop systemen?"></Title>
 		<Content>
 			<ol>
-				<li class="fragment">Auth ger endast grundläggande användarinfo</li>
+				<li class="fragment">Auth ger endast grundläggande användarinfo som t.ex. id & mail</li>
 				<li class="fragment">Extra användardata måste lagras i databasen</li>
 				<li class="fragment">StateChangeStream visar endast information från auth-systemet</li>
 				<li class="fragment">Profildata kräver databasinformation</li>
