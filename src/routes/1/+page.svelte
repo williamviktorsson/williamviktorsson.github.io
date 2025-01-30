@@ -51,6 +51,21 @@
 	</Slide>
 
 	<Slide>
+		<Title title="Angående dessa slides"></Title>
+		<Content>
+			<ol>
+				<li class="fragment">Kommer uppdateras inför varje vecka</li>
+				<li class="fragment">
+					Föreläsning 4 om persistent datalagring kommer få en omfattande uppdatering
+				</li>
+				<ul>
+					<li class="fragment">Motsvarar förändringarna till andra uppgiften, mer om det sen</li>
+				</ul>
+			</ol>
+		</Content>
+	</Slide>
+
+	<Slide>
 		<Title title="Personal på kursen"></Title>
 		<Content>
 			<ul>
@@ -61,18 +76,23 @@
 					<ul>
 						<li class="fragment">Appar(webb+mobil) i Flutter</li>
 						<li class="fragment">Undervisning av teknik/spel/webbutveckling på lokalt gymnasium</li>
+						<li class="fragment">Edtech startup (hårdvara, PCB:er, raspberry, workshops, ...)</li>
 					</ul>
-					<li class="fragment">Två barn</li>
+					<li class="fragment">Två barn (tredje på väg)</li>
 					<ul>
 						<li class="fragment">
-							<strong>Valter & Elton</strong>
+							<strong>Valter, Elton (& ...)</strong>
 						</li>
 					</ul>
 					<li class="fragment">
-						Snowboard, cykling, träning, tv, DIY???, skotta snö, klippa gräs 🔥
+						Snowboard, cykling, träning, serier, hemmafix, skotta snö, klippa gräs 🔥
 					</li>
 				</ul>
+				<hr />
 				<li class="fragment">Utbildningsledare - Henrik Sandqvist 😎</li>
+				<ul>
+					<li class="fragment">Vinka Henrik!</li>
+				</ul>
 			</ul>
 		</Content>
 	</Slide>
@@ -83,26 +103,27 @@
 			<ol>
 				<li class="fragment">Programmering i Dart</li>
 				<ul>
-					<li class="fragment">v.40 - v.45</li>
+					<li class="fragment">v.5 - v.10</li>
 					<li class="fragment">
 						Examineras med <strong>två</strong> praktiska uppgifter
 					</li>
 
 					<ul>
 						<li class="fragment">Kod lämnas in (helst via GitHub helst men zip går bra)</li>
+						<li class="fragment">
+							Kortare inspelad demo lämnas in (kort guide till detta senare...)
+						</li>
 					</ul>
 				</ul>
 				<li class="fragment">Applikationsutveckling med Dart/Flutter</li>
 				<ul>
-					<li class="fragment">v.46 - v.7</li>
+					<li class="fragment">v.11 - v.24</li>
 					<li class="fragment">
 						Examineras med <strong>fyra</strong> praktiska uppgifter
 					</li>
 
 					<ul>
-						<li class="fragment">
-							Kod (helst på Git) + kort video demo (inspelning, jag tillhandahåller guide)
-						</li>
+						<li class="fragment">Kod (helst på Git) + kort video demo</li>
 					</ul>
 				</ul>
 			</ol>
@@ -114,26 +135,28 @@
 		<Content>
 			<ol>
 				<li class="fragment">
-					60 minuter föreläsning på måndagar <strong>kl. 14.00 - 15.00</strong>
+					60 minuter föreläsning på torsdagar <strong>kl. 13.00 - 14.00</strong>
 				</li>
 				<ul>
 					<li class="fragment">15st föreläsningar</li>
-					<li class="fragment">teori, kodexempel, live-kodning</li>
+					<li class="fragment">teori, kodexempel, live-kodning, frågor</li>
 				</ul>
 				<li class="fragment">
-					60 minuter handledning på måndagar <strong>kl. 15.00 - 16.00</strong>
-				</li>
-				<li class="fragment">
-					90 minuter handledning på torsdagar <strong>kl. 14.30 - 16.00</strong>
+					90 minuter handledning på torsdagar <strong>kl. 14.00 - 15.30</strong>
 				</li>
 				<ul>
+					<li class="fragment">Alltså direkt efter föreläsningen</li>
+					<li class="fragment">Inte ovanligt att föreläsningen drar över i tid</li>
+				</ul>
+				<li class="fragment">
+					60 minuter handledning på tisdagar <strong>kl. 09.00 - 10.00</strong>
+				</li>
+
+				<ul>
 					<li class="fragment">Varmt välkomna att komma och ställa frågor och få hjälp!</li>
-					<li class="fragment">Ni kommer få börja berätta vad ni behöver hjälp med</li>
-					<li class="fragment">Prioriterar de med liknande problem</li>
 					<li class="fragment">
 						Större möjlighet att lära om andra får lyssna in på hjälpen ni får, var inte blyga!
 					</li>
-					<li class="fragment">Går även att få individuell hjälp</li>
 					<li class="fragment">
 						Positivt om ni skriver i förväg på teams vad ni behöver hjälp med
 					</li>
@@ -168,7 +191,7 @@
 					<li class="fragment">Widgets, layouter, animationer</li>
 					<li class="fragment">Firebase plattform</li>
 					<li class="fragment">Designa och skapa användarvänliga UI</li>
-					<li class="fragment">Testa och distribuera mobilappar på olika plattformar</li>
+					<li class="fragment">Testa och bygga appar för olika plattformar</li>
 					<li class="fragment">
 						<strong>Skicka och ta emot data från servrar och molntjänster via API</strong>
 					</li>
@@ -179,7 +202,7 @@
 						<strong>Interagera med hårdvaru-API:er i native-applikationer</strong>
 					</li>
 					<li class="fragment">
-						<strong>Använda populära, avancerade tredjeparts-bibliotek</strong>
+						<strong>Använda populära tredjeparts-bibliotek</strong>
 					</li>
 				</ul>
 			</ol>
@@ -196,13 +219,12 @@
 						Modernt, objektorienterat programmeringsspråk utvecklat av Google
 					</li>
 					<li class="fragment">
-						Kompilerar till ARM, x64, JavaScript, WebAssembly för plattformsoberoende utveckling
-						(hybridutveckling?)
+						Kompilerar till ARM, x64, RISC-V, JavaScript, WebAssembly för plattformsoberoende
+						utveckling (hybridutveckling?)
 					</li>
 					<li class="fragment">Stöder webb, mobil och desktop-applikationer</li>
 				</ul>
 				<li class="fragment">Flutter</li>
-
 				<ul>
 					<li class="fragment">UI-ramverk för applikationsutveckling, driven av Dart</li>
 					<li class="fragment">Omfattande bibliotek av vy-komponenter(widgets)</li>
@@ -237,14 +259,7 @@
 					<li class="fragment">Stark & robust typsäkerhet förhindrar fel</li>
 					<li class="fragment">Objektorienterat</li>
 				</ul>
-				<li class="fragment">Hög prestanda</li>
-				<ul>
-					<li class="fragment">JIT för snabb utveckling, AOT för optimerad körning</li>
-					<li class="fragment">Effektiv minnesanvändning och GC</li>
-					<ul>
-						<li class="fragment">Viktigt för funktionell programmering (map,reduce,where, osv)</li>
-					</ul>
-				</ul>
+				<li class="fragment">Multi-plattform kompilering</li>
 			</ol>
 		</Content>
 	</Slide>
@@ -304,24 +319,30 @@
 		<Title title="Kursinnehåll"></Title>
 		<Content>
 			<ol>
-				<li class="fragment">V.40 Introduktion till kursen och Dart-programmering</li>
-				<li class="fragment">V.41 GIT, OOP, OBS(inspelning för inlämning), täcka kunskapsluckor</li>
-				<li class="fragment">V.42 Grundläggande app-arkitektur och serverinteraktion</li>
-				<li class="fragment">V.43 Datahantering och introduktion till state management</li>
+				<li class="fragment">V.5 Introduktion till kursen och Dart-programmering</li>
+				<li class="fragment">V.6 GIT, OOP, OBS(inspelning för inlämning), täcka kunskapsluckor</li>
+				<li class="fragment">V.7 Grundläggande app-arkitektur och serverinteraktion</li>
+				<li class="fragment">V.8 Datahantering och introduktion till state management</li>
 				<li class="fragment">
-					V.44 Avancerade Dart-koncept (mixins, extension methods, extension types, patterns, ...)
+					V.9 Avancerade Dart-koncept (mixins, extension methods, extension types, patterns, ...)
 				</li>
-				<li class="fragment">V.46 Introduktion till Flutter och grundläggande UI-komponenter</li>
-				<li class="fragment">V.47 Layoutdesign och dynamisk datavisning</li>
-				<li class="fragment">V.48 Användarinteraktion och navigering i appen</li>
+				<hr class="fragment" />
+				<li class="fragment">V.11 Introduktion till Flutter och grundläggande UI-komponenter</li>
+				<li class="fragment">V.12 Layoutdesign och dynamisk datavisning</li>
+				<li class="fragment">V.13 Användarinteraktion och navigering i appen</li>
 				<li class="fragment">
-					V.49 Responsiv design och animationer för bättre användarupplevelse
+					V.14 Responsiv design och animationer för bättre användarupplevelse
 				</li>
-				<li class="fragment">V.50-51 Avancerad state management med Bloc-mönstret</li>
-				<li class="fragment">V.3 Introduktion till molntjänster med Firebase</li>
-				<li class="fragment">V.4 Serverless-funktioner och schemalagda uppgifter</li>
-				<li class="fragment">V.5 Interaktion med enhetens hårdvara</li>
-				<li class="fragment">V.6 Integration av tredjepartsbibliotek för utökad funktionalitet</li>
+				<li class="fragment">V.15 Avancerad state management med Bloc-mönstret</li>
+				<ul>
+					<li class="fragment"><strong>Dubbel föreläsning torsdag!</strong></li>
+				</ul>
+				<li class="fragment">V.17 Introduktion till molntjänster med Firebase</li>
+				<ul>
+					<li class="fragment"><strong>Dubbel föreläsning torsdag!</strong></li>
+				</ul>
+				<li class="fragment">V.19 Interaktion med enhetens hårdvara</li>
+				<li class="fragment">V.20 Deployments & distribuering av appar</li>
 			</ol>
 		</Content>
 	</Slide>
@@ -376,7 +397,8 @@
 						</li>
 					</ul>
 					<li class="fragment">
-						Utöka CLI till att bli ett HTTP API med databas. Separation av kod till klient + server.
+						Utöka CLI till att bli ett HTTP API med persistent datalagring. Separation av kod till
+						klient + server.
 					</li>
 					<hr class="fragment" />
 					<li class="fragment">
@@ -388,10 +410,40 @@
 					</li>
 					<li class="fragment">HTTP servern skrotas och ersätts med molntjänster i Firebase</li>
 					<li class="fragment">
-						Utökning av applikationen med integrering av kartor, notiser platsdata och potentiellt
-						bildtagning, bildhantering, delning till sociala medier.
+						Utökning av applikationen till att nyttja hårdvaru-API:er på mobiltelefonen
 					</li>
 				</ol>
+			</ol>
+		</Content>
+	</Slide>
+
+	<Slide>
+		<Title title="Förändringar sen senaste kurstillfälle (HFL24)"></Title>
+		<Content>
+			<ol>
+				<li class="fragment">
+					<strong>Uppgift 2</strong> - Simplare val av persistent datalagring.
+				</li>
+				<ul>
+					<li class="fragment">
+						Fokus ligger på att strukturera & kunna serializera data, samt tänka på relationer
+						mellan data
+					</li>
+					<li class="fragment">Inte en kurs i att hantera databaser</li>
+					<li class="fragment">
+						Möjligheten finns att nyttja t.ex. SQLite men annars uppmanas ni köra en simpel ad-hoc
+						lösning
+					</li>
+				</ul>
+				<li class="fragment">
+					<strong>Uppgift 6</strong> - Begränsad mängd hårdvaru-API:er.
+				</li>
+				<ul>
+					<li class="fragment">Kortare uppgift, nedförsbacke på slutet</li>
+					<li class="fragment">Kvalité över kvantitet.</li>
+					<li class="fragment">Förstå arbetsgången med att jobba mot mobilens operativsystem</li>
+					<li class="fragment">Inte slita ut sig med för mycket mängdträning!</li>
+				</ul>
 			</ol>
 		</Content>
 	</Slide>
@@ -404,7 +456,7 @@
 					<li class="fragment">Datamodeller (Dart)</li>
 					<ul>
 						<li class="fragment">Klasser: Person, Vehicle, ParkingSpace, Parking</li>
-						<li class="fragment">Repository-mönstret: Lagring och hantering av objekt</li>
+						<li class="fragment">Repository-mönstret: Lagring och hantering av data</li>
 					</ul>
 					<li class="fragment">CLI (Command Line Interface)</li>
 					<ul>
@@ -414,7 +466,6 @@
 					<li class="fragment">Utmaningar & Fördjupning</li>
 					<ul>
 						<li class="fragment">Felhantering och beräkning av parkeringskostnad</li>
-						<li class="fragment">Singleton för repository-klasser</li>
 					</ul>
 					<li class="fragment">Vidare Utveckling</li>
 					<ul>
@@ -422,14 +473,23 @@
 						<li class="fragment">Asynkrona metoder (Future)</li>
 					</ul>
 					<hr class="fragment" />
-					<li class="fragment"><strong>Läs mer på kurswebben!</strong></li>
+					<li class="fragment"><strong>Läs mer på Teams!</strong></li>
 				</ol>
 			</Split>
 		</Content>
 	</Slide>
 
 	<Slide>
-		<Title title="Koncept att läsa upp på"></Title>
+		<Title title="Användning av AI?"></Title>
+		<Content>
+			<div class="mt-60 text-center">
+				<tt>Snabb monolog?</tt>
+			</div>
+		</Content>
+	</Slide>
+
+	<Slide>
+		<Title title="Koncept att läsa upp på (länk till docs i uppgift)"></Title>
 		<Content>
 			<Split>
 				<ol>
@@ -545,26 +605,7 @@ String? nullableString = null;`
 							Null (Null) - konceptet "inget värde".
 						</li>
 
-						<li
-							class="fragment"
-							oncurrent={async () => {
-								showcode = true
-								await code.update`// Numbers (int, double)
-int age = 30;
-double pi = 3.14159;
 
-// Strings (String)
-String name = "Alice";
-
-// Booleans (bool)
-bool isActive = true;
-
-// Null (Null)
-String? nullableString = null;`
-							}}
-						>
-							Null (Null) - konceptet "inget värde".
-						</li>
 					</ol>
 
 					<li class="fragment">Grundläggande datastrukturer</li>
@@ -665,7 +706,7 @@ void greet({required String name}) {
 greet(name:"steve");`
 						}}
 					>
-						Required Named Parameters - Lär dig anropa funktioner med namngivna parametrar.
+						Required Named Parameters - Anropa funktioner med namngivna parametrar.
 					</li>
 					<li
 						class="fragment"
@@ -819,7 +860,7 @@ class Employee extends Person {
 }`
 						}}
 					>
-						Method Overriding - Hur man överskriver föräldraklassmetoder.
+						Method Overriding - Hur man omdefinierar föräldraklassmetoder.
 					</li>
 					<li
 						class="fragment"
