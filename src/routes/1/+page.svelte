@@ -322,7 +322,7 @@
 				<li class="fragment">V.5 Introduktion till kursen och Dart-programmering</li>
 				<li class="fragment">V.6 GIT, OOP, OBS(inspelning för inlämning), täcka kunskapsluckor</li>
 				<li class="fragment">V.7 Grundläggande app-arkitektur och serverinteraktion</li>
-				<li class="fragment">V.8 Datahantering och introduktion till state management</li>
+				<li class="fragment">V.8 Datahantering och introduktion till persistent datalagring</li>
 				<li class="fragment">
 					V.9 Avancerade Dart-koncept (mixins, extension methods, extension types, patterns, ...)
 				</li>
