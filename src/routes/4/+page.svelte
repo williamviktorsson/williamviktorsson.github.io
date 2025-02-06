@@ -248,6 +248,186 @@ router.delete('/bags/<id>', deleteBagHandler); // update specific bag`
 	</Slide>
 
 	<Slide>
+		<Title title="Repository med Lokal Datalagring"></Title>
+		<Content>
+			<Split>
+				<ul>
+					<li
+						class="fragment"
+						oncurrent={async () => {
+							showcode = false
+							await code4.update``
+						}}
+					>
+						Vad är ett Repository?
+					</li>
+					<ul>
+						<li
+							class="fragment"
+							oncurrent={async () => {
+								showcode = true
+								await code4.update`// In-memory Repository
+	abstract class Repository<T> {
+		List<T> _items = [];
+		
+		void add(T item) => _items.add(item);
+		List<T> getAll() => _items;
+	}`
+							}}
+						>
+							En abstraktion för datalagring som döljer implementationsdetaljer
+						</li>
+						<li class="fragment">
+							Ger ett enhetligt gränssnitt för att hantera data oavsett lagringssätt
+						</li>
+					</ul>
+					<li
+						class="fragment"
+						oncurrent={async () => {
+							showcode = false
+							await code4.update``
+						}}
+					>
+						Lokal Fillagring
+					</li>
+					<ul>
+						<li
+							class="fragment"
+							oncurrent={async () => {
+								showcode = true
+								await code4.update`abstract class FileRepository<T> {
+		final String filePath;
+		FileRepository(this.filePath);
+	
+		// Konvertering till/från JSON
+		T fromJson(Map<String, dynamic> json);
+		Map<String, dynamic> toJson(T item);
+	}`
+							}}
+						>
+							Basstruktur för filbaserat repository
+						</li>
+						<li
+							class="fragment"
+							oncurrent={async () => {
+								showcode = true
+								await code4.update`abstract class FileRepository<T> {
+		final String filePath;
+		FileRepository(this.filePath);
+	
+		// Konvertering till/från JSON
+		T fromJson(Map<String, dynamic> json);
+		Map<String, dynamic> toJson(T item);
+	
+		// Läser från fil
+		Future<List<T>> readFile() async {
+			final file = File(filePath);
+			if (!await file.exists()) {
+				await file.writeAsString('[]');
+				return [];
+			}
+			final content = await file.readAsString();
+			final List<dynamic> jsonList = jsonDecode(content);
+			return jsonList.map((json) => fromJson(json)).toList();
+		}
+	}`
+							}}
+						>
+							Läsning från fil med felhantering
+						</li>
+						<li
+							class="fragment"
+							oncurrent={async () => {
+								showcode = true
+								await code4.update`abstract class FileRepository<T> {
+		final String filePath;
+		FileRepository(this.filePath);
+	
+		T fromJson(Map<String, dynamic> json);
+		Map<String, dynamic> toJson(T item);
+	
+		Future<List<T>> readFile() async {
+			final file = File(filePath);
+			if (!await file.exists()) {
+				await file.writeAsString('[]');
+				return [];
+			}
+			final content = await file.readAsString();
+			final List<dynamic> jsonList = jsonDecode(content);
+			return jsonList.map((json) => fromJson(json)).toList();
+		}
+	
+		// Skriver till fil
+		Future<void> writeFile(List<T> items) async {
+			final file = File(filePath);
+			final jsonList = items.map((item) => toJson(item)).toList();
+			await file.writeAsString(jsonEncode(jsonList));
+		}
+	
+		// Lägger till item
+		Future<void> add(T item) async {
+			final items = await readFile();
+			items.add(item);
+			await writeFile(items);
+		}
+	}`
+							}}
+						>
+							Skrivning till fil och operationer
+						</li>
+					</ul>
+					<li
+						class="fragment"
+						oncurrent={async () => {
+							showcode = true
+							await code4.update`// Användning
+	class Person {
+		final String id;
+		final String name;
+		Person(this.id, this.name);
+	}
+	
+	class PersonRepository extends FileRepository<Person> {
+		PersonRepository() : super('persons.json');
+		
+		@override
+		Person fromJson(Map<String, dynamic> json) {
+			return Person(json['id'], json['name']);
+		}
+		
+		@override
+		Map<String, dynamic> toJson(Person person) {
+			return {'id': person.id, 'name': person.name};
+		}
+	}`
+						}}
+					>
+						Praktiskt Exempel
+					</li>
+				</ul>
+				<div>
+					<div class="enter" hidden={!showcode}>
+						<Code
+							code={``}
+							theme="catppuccin-frappe"
+							lang="dart"
+							autoIndent={true}
+							bind:this={code4}
+							options={{
+								duration: 600,
+								stagger: 15,
+								containerStyle: false,
+								lineNumbers: true
+							}}
+							class="overflow-y-clip"
+						/>
+					</div>
+				</div>
+			</Split>
+		</Content>
+	</Slide>
+
+	<Slide>
 		<Title title="Kom igång med ObjectBox!"></Title>
 		<Content>
 			<ol>
