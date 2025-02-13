@@ -43,6 +43,9 @@
 						veckan</strong
 					>
 				</li>
+				<li class="fragment">Använda paketet <code>shelf</code> & <code>shelf_router</code></li>
+				<li class="fragment">Exempelprojekt på GitHub</li>
+				<li class="fragment">Förslag projektstruktur</li>
 			</ol>
 		</Content>
 	</Slide>
@@ -52,8 +55,6 @@
 		<Content>
 			<ol>
 				<li class="fragment">Utöka server till att erbjuda persistent datalagring</li>
-				<li class="fragment">Nyttja ultrasimpel lokal NoSQL databas</li>
-				<li class="fragment">Förberedelse för att lära sig använda Firebase Firestore</li>
 			</ol>
 		</Content>
 	</Slide>
@@ -62,7 +63,7 @@
 		<Title title="Visualisering"></Title>
 		<Content>
 			<div class="mt-60 text-center">
-				Dra fram en whiteboard och rita lite arkitektur! Vad ska introduceras egentligen?
+				Dra fram en whiteboard visa förändringarna i arkitekturen.
 			</div>
 		</Content>
 	</Slide>
@@ -101,7 +102,7 @@ Future<String> getData() async {
 }`
 						}}
 					>
-						Exempel på HTTP GET och POST
+						Exempel på HTTP GET
 					</li>
 					<li class="fragment">Vanliga HTTP-metoder: GET, POST, PUT, DELETE</li>
 					<li class="fragment">
@@ -381,7 +382,7 @@ Future<Response> _getItemsHandler(Request request) async {
 			await code6.update``
 		}}
 	>
-		<Title title="Typsäker datahantering med fromJson och toJson"></Title>
+		<Title title="Datahantering med fromJson och toJson"></Title>
 		<Content>
 			<Split>
 				<ul>
@@ -470,6 +471,50 @@ class DataRepository {
 	</Slide>
 
 	<Slide>
+		<Title title="Referenskod"></Title>
+		<Content>
+			<div class="mt-60 text-center">
+				Orientera lite i dagens kodexempel som finns på <a
+					href="https://github.com/williamviktorsson/HFL25-1/tree/main/assignment_code">GitHub</a
+				>.
+			</div>
+		</Content>
+	</Slide>
+
+	<Slide>
+		<Title title="Projektstrukturer exempel-repo"></Title>
+		<Content>
+			<ol>
+				<li class="fragment">Servern består uteslutande av två saker:</li>
+				<ul>
+					<li class="fragment">Handlers för HTTP request för olika routes</li>
+					<li class="fragment">
+						Implementationen av de repositories som servern använder för lokal datalagring.
+					</li>
+				</ul>
+				<li class="fragment">Klienten (CLI) består av fyra saker:</li>
+				<ul>
+					<li class="fragment">Kod för att visa och navigera mellan menyer</li>
+					<li class="fragment">
+						Kod för att utföra de operationer som presenteras som val i menyerna.
+					</li>
+					<ul>
+						<li class="fragment">Läser och hanterar input från användaren.</li>
+					</ul>
+					<li class="fragment">Lite utils för att validera input</li>
+					<li class="fragment">
+						Implementationen av de repositories som klienten använder för kommunikation med servern.
+					</li>
+				</ul>
+				<li class="fragment">
+					Ett ytterligare projekt som jag kallar shared där jag samlar koden som både CLI och server
+					nyttjar.
+				</li>
+			</ol>
+		</Content>
+	</Slide>
+
+	<Slide>
 		<Title title="Steg för att refaktorisera till klient+server-lösning"></Title>
 		<Content>
 			<ol>
@@ -484,11 +529,6 @@ class DataRepository {
 					<li style="list-style: none;" class="fragment">
 						<code>dart pub get</code>
 					</li>
-					<li class="fragment">
-						Kopiera över koden för dina klasser och repositories från uppgift 1 och placera i <code
-							>/lib</code
-						>
-					</li>
 				</ul>
 				<li class="fragment">Testa köra servern med:</li>
 				<ul>
@@ -496,27 +536,23 @@ class DataRepository {
 						<code>dart run {'<projektnamn>:server'}</code>
 					</li>
 				</ul>
-				<li class="fragment">Testa testa servern med:</li>
+				<li class="fragment">Testa att köra testerna för serverkoden med:</li>
 				<ul>
 					<li style="list-style: none;" class="fragment">
 						<code>dart test</code>
 					</li>
 				</ul>
-				<li class="fragment">Skapa ett nytt dart-projekt för att utöka ditt CLI:</li>
-				<ul>
-					<li style="list-style: none;" class="fragment">
-						<code>dart create {'<projektnamn>_cli'}</code>
-					</li>
-					<li class="fragment">
-						Detta behövs för att ni ska kunna lägga till nätverksfunktionalitet med kommandot <code
-							>dart pub add http</code
-						>
-					</li>
-				</ul>
-				<li class="fragment">Kopiera över koden från uppgift 1 och placera i <code>/lib</code></li>
 				<li class="fragment">
-					Fixa så att main-funktionen i <code>/bin/{'<projektnamn>_cli.dart'}</code> kör ditt CLI
+					Gör ett nytt projekt (shared) där ni samlar koden som både CLI och server nyttjar.
 				</li>
+				<ul>
+					<li class="fragment">Skapat med detta kommando:</li>
+					<ul>
+						<li style="list-style: none;" class="fragment">
+							<code>dart create -t package {'cli_shared'}</code>
+						</li>
+					</ul>
+				</ul>
 			</ol>
 		</Content>
 	</Slide>

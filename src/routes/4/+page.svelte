@@ -204,16 +204,7 @@ router.delete('/bags/<id>', deleteBagHandler); // update specific bag`
 						Inget ni behöver fixa men jag blev less efter ett tag på att ha duplicerad kod :-)
 					</li>
 				</ul>
-				<li class="fragment">
-					Jag har struntat i abstrakta generiska klasser och bytt till interface
-				</li>
-				<ul>
-					<li class="fragment">För att undvika förvirring.</li>
-					<li class="fragment">
-						Det blir mer läsbar kod om alla Repositories implementerar sin egen logik.
-					</li>
-					<li class="fragment">Däremot mer repetition...</li>
-				</ul>
+
 			</ol>
 		</Content>
 	</Slide>
@@ -427,85 +418,12 @@ router.delete('/bags/<id>', deleteBagHandler); // update specific bag`
 		</Content>
 	</Slide>
 
-	<Slide>
-		<Title title="Kom igång med ObjectBox!"></Title>
-		<Content>
-			<ol>
-				<li class="fragment">Lägg till objectbox till din server och modelkod:</li>
-				<ul>
-					<li style="list-style: none;" class="fragment">
-						<code>dart pub add objectbox</code>
-					</li>
-				</ul>
-				<li class="fragment">Lägg till paket för kodgenerering:</li>
-				<ul>
-					<li style="list-style: none;" class="fragment">
-						<code>dart pub add --dev build_runner objectbox_generator:any</code>
-					</li>
-				</ul>
-				<li class="fragment">
-					Lägg till <code>@Entity</code> och <code>@Id</code> annotationer till dina modell klasser.
-				</li>
-				<li class="fragment">Generera objectbox kod(som du aldrig kommer behöva röra sedan)</li>
-				<ul>
-					<li style="list-style: none;" class="fragment">
-						<code>dart run build_runner build</code>
-					</li>
-				</ul>
-				<li class="fragment">
-					Ladda ned c-biblioteket för objectbox. Detta är kanske det mest tekniska steget :-)
-				</li>
-				<ul>
-					<li class="fragment">
-						Navigera till <a href="https://github.com/objectbox/objectbox-c/releases"
-							>https://github.com/objectbox/objectbox-c/releases</a
-						> och välj senaste release för din plattform.
-					</li>
-					<ul>
-						<li class="fragment">Välj filen som heter objectbox-operativsystem. Alltså inte dem som innehåller sync eller jni</li>
-					</ul>
-					<li class="fragment">
-						Unzip och placera innehållet i <code>/lib</code> direkt under
-						<code>/lib</code> i serverprojektet.
-					</li>
-				</ul>
-				<li class="fragment">
-					Byt ut din lokala datalagring mot att kommunicera med en ObjectBox.
-				</li>
-				<ul>
-					<li class="fragment">Getting started guiden här med Dart Native som val är bra:</li>
-					<ul>
-						<li class="fragment">
-							<a href="https://docs.objectbox.io/getting-started"
-								>https://docs.objectbox.io/getting-started</a
-							>
-						</li>
-					</ul>
-				</ul>
-			</ol>
-		</Content>
-	</Slide>
 
 	<Slide>
 		<Title title="Relationer? Begränsningar?"></Title>
 		<Content>
 			<ol>
-				<li class="fragment">
-					För klasser som har nästlade klasser behöver du göra lite magi eftersom ObjectBox endast
-					stödjer lagring av primitiva datatyper
-				</li>
-				<ul>
-					<li class="fragment">
-						Du kan använda en getter+setter för att lagra en serializerad version av ditt nästlade
-						data.
-					</li>
-				</ul>
-				<li class="fragment">Det finns stöd för relationer i ObjectBox som du kan nyttja</li>
-				<ul>
-					<li class="fragment">
-						Däremot finns inte det i Firebase Firestore så därför bör vi undvika det
-					</li>
-				</ul>
+				
 				<li class="fragment">Det är okej att lagra duplicerat data i denna uppgift</li>
 				<ul>
 					<li class="fragment">
