@@ -36,11 +36,6 @@
 		<Content>
 			<ol>
 				<li class="fragment">Utöka server till att erbjuda persistent datalagring</li>
-				<li class="fragment">Nyttja ultrasimpel lokal NoSQL databas</li>
-				<ul>
-					<li class="fragment">Inte den som var planerad, men den nya jag valt är väldigt lik!</li>
-				</ul>
-				<li class="fragment">Förberedelse för att lära sig använda Firebase Firestore</li>
 			</ol>
 		</Content>
 	</Slide>
@@ -82,9 +77,9 @@
 							await code1.update`abstract interface class RepositoryInterface<T> {
   Future<T> create(T item);
   Future<List<T>> getAll();
-  Future<T?> getById(int id);
-  Future<T> update(int id, T item);
-  Future<T> delete(int id);
+  Future<T?> getById(String id);
+  Future<T> update(String id, T item);
+  Future<T> delete(String id);
 }`
 						}}
 					>
@@ -101,17 +96,17 @@
 							await code1.update`abstract interface class RepositoryInterface<T> {
 Future<T> create(T item);
 Future<List<T>> getAll();
-Future<T?> getById(int id);
-Future<T> update(int id, T item);
-Future<T> delete(int id);
+Future<T?> getById(String id);
+Future<T> update(String id, T item);
+Future<T> delete(String id);
 
 // Exempel model
 
 class Item {
   final String description;
-  final int id;
+  final String id;
 
-  Item(this.description, [this.id = -1]);
+  Item(this.description, [String? id]) : id = id ?? Uuid().v4(); // id genereras om det inte tilldelas
 
   factory Item.fromJson(Map<String, dynamic> json) {
     return Item(json['description'], json['id']);
@@ -170,71 +165,6 @@ router.delete('/bags/<id>', deleteBagHandler); // update specific bag`
 					</div>
 				</div>
 			</Split>
-		</Content>
-	</Slide>
-
-	<Slide>
-		<Title title="Referenskod"></Title>
-		<Content>
-			<div class="mt-60 text-center">Orientera lite i dagens kodexempel som finns på GitHub.</div>
-		</Content>
-	</Slide>
-
-	<Slide>
-		<Title title="Vad har jag gjort?!"></Title>
-		<Content>
-			<ol>
-				<li class="fragment">Tre dart-projekt.</li>
-				<ul>
-					<li class="fragment">
-						Ett nytt som jag kallar shared där jag samlar koden som både CLI och server nyttjar.
-					</li>
-					<li class="fragment">Skapat med detta kommando:</li>
-					<ul>
-						<li style="list-style: none;" class="fragment">
-							<code>dart create -t package {'cli_shared'}</code>
-						</li>
-					</ul>
-
-					<li class="fragment">
-						Har kod för models och mitt repository interface som både CLI och server
-						nyttjar/implementerar
-					</li>
-					<li class="fragment">
-						Inget ni behöver fixa men jag blev less efter ett tag på att ha duplicerad kod :-)
-					</li>
-				</ul>
-
-			</ol>
-		</Content>
-	</Slide>
-
-	<Slide>
-		<Title title="Projektstrukturer?!"></Title>
-		<Content>
-			<ol>
-				<li class="fragment">Servern består uteslutande av två saker:</li>
-				<ul>
-					<li class="fragment">Handlers för HTTP request för olika routes</li>
-					<li class="fragment">
-						Implementationen av de repositories som servern använder för lokal datalagring.
-					</li>
-				</ul>
-				<li class="fragment">Klienten (CLI) består av fyra saker:</li>
-				<ul>
-					<li class="fragment">Kod för att visa och navigera mellan menyer</li>
-					<li class="fragment">
-						Kod för att utföra de operationer som presenteras som val i menyerna.
-					</li>
-					<ul>
-						<li class="fragment">Läser och hanterar input från användaren.</li>
-					</ul>
-					<li class="fragment">Lite utils för att validera input</li>
-					<li class="fragment">
-						Implementationen av de repositories som klienten använder för kommunikation med servern.
-					</li>
-				</ul>
-			</ol>
 		</Content>
 	</Slide>
 
@@ -418,24 +348,11 @@ router.delete('/bags/<id>', deleteBagHandler); // update specific bag`
 		</Content>
 	</Slide>
 
-
 	<Slide>
 		<Title title="Relationer? Begränsningar?"></Title>
 		<Content>
 			<ol>
-				
 				<li class="fragment">Det är okej att lagra duplicerat data i denna uppgift</li>
-				<ul>
-					<li class="fragment">
-						När samma data förekommer på samma ställe i en databas kallas datat <code
-							>denormaliserat</code
-						>
-					</li>
-				</ul>
-				<li class="fragment">
-					En vanlig lösning på relationer i NoSQL-databaser är att en till kollektion introduceras
-					endast för att representera relationerna.
-				</li>
 
 				<li class="fragment">
 					En annan lösning är att endast id:n till objekt i relation lagras, och därefter får dessa
@@ -464,14 +381,49 @@ router.delete('/bags/<id>', deleteBagHandler); // update specific bag`
 		</Content>
 	</Slide>
 
+	<Slide>
+		<Title title="Relationsdata i dokumentbaserad datalagring (nosql,json,fil,osv)"></Title>
+		<Content>
+			<ol>
+				<li class="fragment">Två huvudmetoder för att hantera relationer:</li>
+				<ul>
+					<li class="fragment">
+						Metod 1: Duplicera all data (enkelt men kan leda till inkonsistens)
+					</li>
+					<li class="fragment">
+						Metod 2: Lagra referenser/ID:n (mer komplext men håller data konsistent)
+					</li>
+				</ul>
 
+				<li class="fragment">Referensbaserad metod:</li>
+				<ul>
+					<li class="fragment">Skapa en Entity-modell som skiljer sig från domänmodellen</li>
+					<li class="fragment">Entity lagrar bara ID-referenser till relaterade objekt</li>
+					<li class="fragment">
+						Konvertera mellan Entity (för lagring) och domänmodell (för användning)
+					</li>
+					<li class="fragment">Kräver asynkrona operationer för att hämta relaterade objekt</li>
+				</ul>
+
+				<li class="fragment">Överväganden:</li>
+				<ul>
+					<li class="fragment">Fler filläsningar men data förblir konsistent</li>
+					<li class="fragment">Mer komplex kod men bättre datamodell</li>
+					<li class="fragment">Särskilt fördelaktigt när:</li>
+					<ul>
+						<li class="fragment">Data uppdateras ofta</li>
+						<li class="fragment">Samma objekt används i flera kontexter</li>
+						<li class="fragment">Applikationen kan växa i komplexitet</li>
+					</ul>
+				</ul>
+			</ol>
+		</Content>
+	</Slide>
 
 	<Slide>
 		<Title title="Tack för idag!"></Title>
 		<Content>
-			<div class="mt-60 text-center">
-				Det var allt för idag!
-			</div>
+			<div class="mt-60 text-center">Det var allt för idag!</div>
 		</Content>
 	</Slide>
 
