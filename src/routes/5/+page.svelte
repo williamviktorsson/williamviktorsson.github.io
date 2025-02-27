@@ -16,6 +16,9 @@
 	let code4: Code
 	let code5: Code
 	let code6: Code
+	let codeAdvancedPatterns: Code
+	let codeEventLoop: Code
+	let codeIsolates: Code
 
 	let showcode: boolean = $state(false)
 </script>
@@ -61,31 +64,24 @@
 		<Title title="Nästa vecka"></Title>
 		<Content>
 			<ol>
-				<li class="fragment">Ingen föreläsning</li>
-				<li class="fragment">Bara handledning</li>
+				<li class="fragment">Ingen föreläsning eller handledning</li>
 				<li class="fragment">Tid att göra klart uppgift 2 så alla är i fas inför Flutter.</li>
+				<li class="fragment">Skriv på Teams om ni behöver hjälp 😊</li>
 			</ol>
 		</Content>
 	</Slide>
 
 	<Slide>
-		<Title title="Uppdatering: Persistent Datalagring i Uppgift 2"></Title>
+		<Title title="Persistent Datalagring i Uppgift 2"></Title>
 		<Content>
 			<ol>
 				<li class="fragment">
 					Ni är fria att implementera repositories med valfri persistent datalagringsstrategi
 				</li>
-				<li class="fragment">Anledning till ändringen:</li>
-				<ul>
-					<li class="fragment">Undvika krav på nedladdning av osignerade exekverbara filer</li>
-					<li class="fragment">ObjectBox har begränsningar kring datatyper och konstruktorer</li>
-				</ul>
+
 				<li class="fragment">Tillgängliga strategier:</li>
 
 				<ul>
-					<li class="fragment">
-						<code>ObjectBox</code> - För dig som är ny till databaser och vill ha en tillgänglig dokumentation
-					</li>
 					<li class="fragment"><code>SQLite</code> - För dig med tidigare SQL/SQLite-erfarenhet</li>
 					<ul>
 						<li class="fragment">Kan innebära visst dubbelarbete då Firebase är NoSQL</li>
@@ -94,15 +90,15 @@
 						<code>Hive</code> - Enklare alternativ med tillräckliga exempel (trots begränsad dokumentation)
 					</li>
 					<li class="fragment"><code>Fil</code> - Egen lösning med JSON/CSV-format</li>
+					<li class="fragment">
+						<code>Supabase</code> - liknar firebase, för dig med tidigare erfarenhet.
+					</li>
 					<li class="fragment">Eller din egen preferens</li>
 				</ul>
 
-				<li class="fragment">Referenskod finns nu tillgänglig för samtliga strategier</li>
+				<li class="fragment">Referenskod finns på GitHub</li>
 				<li class="fragment">
 					Vi examinerar funktionaliteten (persistent datalagring), inte valet av strategi
-				</li>
-				<li class="fragment">
-					Ursäkter till er som redan börjat med en lösning ni nu vill byta ut
 				</li>
 			</ol>
 		</Content>
@@ -124,7 +120,7 @@
 						class="fragment"
 						oncurrent={async () => {
 							showcode = true
-							await code2.update`// Extension Type - Typsäker ålder
+							await code2.update`// Extension Type - t.ex. ålder
 extension type Age(int value) {
   // Begränsar vad som kan göras med åldern
   bool isAdult() => value >= 18;
@@ -150,10 +146,17 @@ void main() {
 					>
 						Grundläggande exempel
 					</li>
-					<li class="fragment">Varför använda extensions?</li>
+					<li class="fragment">Varför använda extension types?</li>
 					<ul>
-						<li class="fragment">Typsäkerhet utan runtime overhead</li>
-						<li class="fragment">Utöka funktionalitet utan arv</li>
+						<li class="fragment">Typsäkerhet utan runtime overhead (skapas inga objekt)</li>
+					</ul>
+					<li class="fragment">Varför använda extension methods?</li>
+					<ul>
+						<li class="fragment">Utöka funktionalitet utan att nyttja arv</li>
+						<li class="fragment">
+							Du slipper skapa t.ex. MyList för att lägga till dina uppdateringar till en vanlig
+							List.
+						</li>
 					</ul>
 				</ul>
 				<div>
@@ -214,12 +217,13 @@ class PaymentService with Loggable {
 }`
 						}}
 					>
-						Grundkoncept
+						Exempelkod
 					</li>
 					<li class="fragment">Fördelar med mixins:</li>
 					<ul>
 						<li class="fragment">Dela funktionalitet mellan klasser</li>
 						<li class="fragment">Undvik duplicerad kod</li>
+						<li class="fragment">För att dela funktionalitet, ej state, instansvariabler osv.</li>
 					</ul>
 				</ul>
 				<div>
@@ -263,12 +267,13 @@ class PaymentService with Loggable {
 							await code4.update`// Object destructuring
 var user = {'name': 'Anna', 'age': 30};
 var {'name': name, 'age': age} = user;
-
+print(name);  // Anna
+print(age);  // 30
 // List patterns med rest
 var numbers = [1, 2, 3, 4, 5];
 var [first, second, ...rest] = numbers;
-
-// Switch pattern matching
+print(second);  // 2
+// Switch pattern matching (matchar på objekt)
 String getDeviceType(Map<String, dynamic> device) =>
   switch (device) {
     {'type': 'mobile', 'os': 'iOS'} => 'iPhone',
@@ -307,6 +312,159 @@ String getDeviceType(Map<String, dynamic> device) =>
 		</Content>
 	</Slide>
 
+	<!-- Slide 2: Patterns - Avancerade -->
+	<Slide
+		in={async () => {
+			showcode = false
+			await codeAdvancedPatterns.update``
+		}}
+	>
+		<Title title="Patterns - Avancerade Matchningar"></Title>
+		<Content>
+			<Split>
+				<ul>
+					<li
+						class="fragment"
+						oncurrent={async () => {
+							showcode = true
+							await codeAdvancedPatterns.update`// Pattern matching med sealed klasser
+sealed class Shape {}
+
+class Square implements Shape {
+  final double length;
+  Square(this.length);
+}
+
+class Circle implements Shape {
+  final double radius;
+  Circle(this.radius);
+}
+
+// Komplett matchning garanterad av kompilatorn
+double calculateArea(Shape shape) => switch (shape) {
+      Square(length: var l) => l * l,
+      Circle(radius: var r) => math.pi * r * r,
+    };
+
+main() {
+  Shape shape = Square(10);
+
+// Logical-OR pattern med delad guard
+  switch (shape) {
+    case Square(length: var x) || Circle(radius: var x) when x > 0:
+      print('Non-empty symmetric shape');
+    case _:
+      print('Unknown shape');
+  }
+}`
+						}}
+					>
+						Exempel på avancerade patterns
+					</li>
+					<li class="fragment">Pattern matching med sealed klasser</li>
+					<li class="fragment">Logiska OR-mönster med shared guards</li>
+				</ul>
+				<div>
+					<div class="enter" hidden={!showcode}>
+						<Code
+							code={``}
+							theme="catppuccin-frappe"
+							lang="dart"
+							autoIndent={true}
+							bind:this={codeAdvancedPatterns}
+							options={{
+								duration: 600,
+								stagger: 15,
+								containerStyle: false,
+								lineNumbers: true
+							}}
+							class="overflow-y-clip"
+						/>
+					</div>
+				</div>
+			</Split>
+		</Content>
+	</Slide>
+
+	<!-- Slide 3: Event Loop -->
+	<Slide
+		in={async () => {
+			showcode = false
+			await codeEventLoop.update``
+		}}
+	>
+		<Title title="Event Loop - Hjärtat av Asynkron Dart"></Title>
+		<Content>
+			<Split>
+				<ul>
+					<li class="fragment">Single-threaded men asynkron modell</li>
+					<li class="fragment">Hur async funktioner kan köras "parallellt"</li>
+					<li class="fragment">Prioriteringssystem med flera köer:</li>
+					<ul>
+						<li class="fragment">Microtask Queue (högst prioritet)</li>
+						<li class="fragment">Event Queue (standard prioritet)</li>
+					</ul>
+					<li
+						class="fragment"
+						oncurrent={async () => {
+							showcode = true
+							await codeEventLoop.update`import 'dart:async';
+
+void main() {
+  print('1. Synkron kod körs först');
+  
+  // Event queue (lägre prioritet)
+  Future(() {
+    print('4. Event queue task');
+  });
+  
+  Future.delayed(Duration(milliseconds: 50), () {
+    print('5. Delayed event körs sist');
+  });
+  
+  // Microtask queue (högre prioritet)
+  scheduleMicrotask(() {
+    print('3. Microtask körs före alla event queue tasks');
+  });
+  
+  print('2. Mer synkron kod');
+  
+  // Utskrift:
+  // 1. Synkron kod körs först
+  // 2. Mer synkron kod
+  // 3. Microtask körs före alla event queue tasks
+  // 4. Event queue task
+  // 5. Delayed event körs sist
+}`
+						}}
+					>
+						Event Loop exekveringsordning
+					</li>
+					<li class="fragment">Användarinput prioriteras i event queue</li>
+				</ul>
+				<div>
+					<div class="enter" hidden={!showcode}>
+						<Code
+							code={``}
+							theme="catppuccin-frappe"
+							lang="dart"
+							autoIndent={true}
+							bind:this={codeEventLoop}
+							options={{
+								duration: 600,
+								stagger: 15,
+								containerStyle: false,
+								lineNumbers: true
+							}}
+							class="overflow-y-clip"
+						/>
+					</div>
+				</div>
+			</Split>
+		</Content>
+	</Slide>
+
+	<!-- Slide 4: Isolates - Grundläggande -->
 	<Slide
 		in={async () => {
 			showcode = false
@@ -317,14 +475,14 @@ String getDeviceType(Map<String, dynamic> device) =>
 		<Content>
 			<Split>
 				<ul>
-					<li class="fragment">Darts sätt att hantera concurrency</li>
-					<li class="fragment">Separat minne</li>
+					<li class="fragment">När event loop inte räcker till</li>
+					<li class="fragment">Darts sätt att hantera äkta parallellism</li>
+					<li class="fragment">Separat minne för varje isolate</li>
 					<li
 						class="fragment"
 						oncurrent={async () => {
 							showcode = true
 							await code5.update`import 'dart:isolate';
-
 // Tung beräkning i separat isolate
 Future<int> heavyComputation() async {
   return await Isolate.run(() {
@@ -335,23 +493,22 @@ Future<int> heavyComputation() async {
     return result;
   });
 }
-
 void main() async {
   print('Startar beräkning...');
-  
+ 
   // Kör beräkningen på en separat isolate som inte blockerar huvudtråden(main isolate)
   final result = await heavyComputation();
-  
+ 
   print('Resultat: $result');
 }`
 						}}
 					>
-						Grundläggande exempel
+						Grundläggande exempel med Isolate.run()
 					</li>
-					<li class="fragment">Användningsområden:</li>
+					<li class="fragment">Fördelar jämfört med async/await:</li>
 					<ul>
-						<li class="fragment">Tunga beräkningar</li>
-						<li class="fragment">Parallell databehandling</li>
+						<li class="fragment">Äkta parallell exekvering</li>
+						<li class="fragment">CPU-intensiva uppgifter blockerar inte UI</li>
 					</ul>
 				</ul>
 				<div>
@@ -372,6 +529,120 @@ void main() async {
 						/>
 					</div>
 				</div>
+			</Split>
+		</Content>
+	</Slide>
+
+	<!-- Slide 5: Isolates - Dataöverföring -->
+	<Slide
+		in={async () => {
+			showcode = false
+			await codeIsolates.update``
+		}}
+	>
+		<Title title="Isolates - Kontinuerlig Kommunikation"></Title>
+		<Content>
+			<Split>
+				<ul>
+					<li class="fragment">Kommunikation via message passing</li>
+					<li class="fragment">Kontinuerlig dataström med streams</li>
+					<li class="fragment">SendPort och ReceivePort</li>
+					<li
+						class="fragment"
+						oncurrent={async () => {
+							showcode = true
+							await codeIsolates.update`import 'dart:isolate';
+
+// Funktion som körs i en separat isolate
+void generateDataStream(SendPort sendPort) async {
+  for (int i = 1; i <= 10; i++) {
+    await Future.delayed(Duration(milliseconds: 200));
+
+    // Skicka data kontinuerligt tillbaka till main isolate
+    sendPort.send(i);
+  }
+}
+
+void main() async {
+  final receivePort = ReceivePort();
+
+  print('Startar dataström från separat isolate...');
+
+  final isolate = await Isolate.spawn(generateDataStream, receivePort.sendPort);
+
+  // Lyssna på kontinuerlig dataström
+  await for (final data in receivePort) {
+    if (data == 10) {
+      print('Dataström komplett');
+      break;
+    }
+    print('Mottog data: ' + data.toString());
+  }
+
+  // Städa upp
+  receivePort.close();
+  isolate.kill();
+}`
+						}}
+					>
+						Kontinuerlig dataström mellan isolates
+					</li>
+					<li class="fragment">Mer avancerat än Isolate.run()</li>
+					<li class="fragment">Perfekt för realtidsdata och långvariga processer</li>
+				</ul>
+				<div>
+					<div class="enter" hidden={!showcode}>
+						<Code
+							code={``}
+							theme="catppuccin-frappe"
+							lang="dart"
+							autoIndent={true}
+							bind:this={codeIsolates}
+							options={{
+								duration: 600,
+								stagger: 15,
+								containerStyle: false,
+								lineNumbers: true
+							}}
+							class="overflow-y-clip"
+						/>
+					</div>
+				</div>
+			</Split>
+		</Content>
+	</Slide>
+
+	<Slide
+		in={async () => {
+			showcode = false
+		}}
+	>
+		<Title title="Sammanfattning - Avancerad Dart"></Title>
+		<Content>
+			<Split>
+				<ul>
+					<li class="fragment">Moderna Dart-koncept vi har utforskat:</li>
+					<ul>
+						<li class="fragment">Extensions - utöka befintliga klasser utan arv</li>
+						<li class="fragment">Extension Types - typsäkra wrappers utan runtime overhead</li>
+						<li class="fragment">Mixins - återanvändbar funktionalitet mellan klasser</li>
+						<li class="fragment">Patterns - kraftfull datahantering och matchning</li>
+						<li class="fragment">Event Loop - asynkron exekvering på en tråd</li>
+						<li class="fragment">Isolates - äkta parallellism för krävande uppgifter</li>
+					</ul>
+				</ul>
+				<ul>
+					<li class="fragment">Uppmaningar:</li>
+					<ul>
+						<li class="fragment">Använd patterns för tydligare dataextraktion</li>
+						<li class="fragment">Tänk på din event loop för bättre responsive UI</li>
+						<li class="fragment">Använd mixins för att dela funktionalitet, inte state</li>
+						<li class="fragment">Nyttja extension methods istället för utility-klasser</li>
+						<li class="fragment">Använd isolates för CPU-intensiva operationer</li>
+						<li class="fragment">Minimera datamängden som skickas mellan isolates</li>
+						<li class="fragment">I Flutter: compute() förenklar isolate-användning</li>
+					</ul>
+				</ul>
 			</Split>
 		</Content>
 	</Slide>
