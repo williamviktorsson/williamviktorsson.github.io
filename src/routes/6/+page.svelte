@@ -144,10 +144,7 @@
 					>
 				</li>
 				<hr class="fragment" />
-				<li class="fragment">
-					CLI klienten skrotas och ersätts med en applikation i Flutter. Mobilvy för att parkera,
-					desktop/webb för att redigera parkeringsplatser.
-				</li>
+				<li class="fragment">CLI klienten skrotas och ersätts med en applikation i Flutter.</li>
 				<li class="fragment">
 					Refaktorisering av klientkoden till att nyttja populär state management lösning (bloc).
 				</li>
@@ -530,6 +527,9 @@
 								>UNIKA</strong
 							> BuildContext
 						</li>
+						<li class="fragment">
+							En buildcontext skickas alltid med som argument till en widgets build-metod
+						</li>
 					</ul>
 				</ul>
 			</ol>
@@ -586,16 +586,19 @@
 	</Slide>
 
 	<Slide>
-		<Title title="Uppgift 3: Flutter Parkeringsappar"></Title>
+		<Title title="Uppgift 3: Flutter Parkeringsapp"></Title>
 		<Content>
 			<ul>
 				<li class="fragment">
 					Dags att bygga grafiska gränssnitt till er parkeringsapplikation! 🎨
 				</li>
-				<li class="fragment">Vi ska bygga två separata Flutter-applikationer:</li>
+				<li class="fragment">
+					Vi ska bygga en Flutter-applikation för parkeringsanvändare (mobil/web/desktop)
+				</li>
 				<ul>
-					<li class="fragment">En för parkeringsanvändare (mobil)</li>
-					<li class="fragment">En för parkeringsadministratörer (desktop)</li>
+					<li class="fragment">Användare ska kunna hantera</li>
+
+					<li class="fragment">Parkeringsadministratörer får fortsätta använda ert CLI</li>
 				</ul>
 				<li class="fragment">Samma server/backend som tidigare - men nytt användargränssnitt</li>
 			</ul>
@@ -606,19 +609,16 @@
 		<Title title="Två separata klienter"></Title>
 		<Content>
 			<ol>
-				<li class="fragment"><strong>parking_admin</strong> - För parkeringsadministratörer</li>
+				<li class="fragment"><strong>CLI</strong> - För parkeringsadministratörer</li>
 				<ul>
-					<li class="fragment">Optimerad för desktop/webb (landscape)</li>
 					<li class="fragment">Huvudfunktioner:</li>
 					<ul>
 						<li class="fragment">Hantera parkeringsplatser (CRUD)</li>
-						<li class="fragment">Övervaka aktiva parkeringar</li>
 					</ul>
-					<li class="fragment">Använder förslagsvis <code>NavigationRail</code> för navigation</li>
 				</ul>
-				<li class="fragment"><strong>parking_user</strong> - För bilister</li>
+				<li class="fragment"><strong>Flutter applikation</strong> - För bilister</li>
 				<ul>
-					<li class="fragment">Optimerad för mobil/webb (portrait)</li>
+					<li class="fragment">Optimerad för mobil + webb (portrait + landscape)</li>
 					<li class="fragment">Huvudfunktioner:</li>
 					<ul>
 						<li class="fragment">Registrera sig/logga in</li>
@@ -629,7 +629,7 @@
 						<li class="fragment">Starta/stoppa parkering</li>
 					</ul>
 					<li class="fragment">
-						Använder förslagsvis <code>NavigationBar</code> eller <code>BottomAppBar</code> för navigation
+						Använder förslagsvis <code>NavigationBar</code> eller <code>BottomAppBar</code> för navigation 
 					</li>
 				</ul>
 			</ol>
@@ -666,14 +666,13 @@
 		<Title title="Kom igång denna vecka"></Title>
 		<Content>
 			<ol>
-				<li class="fragment">Börja med att skapa projekten:</li>
+				<li class="fragment">Börja med att skapa projektet:</li>
 				<ul>
-					<li class="fragment"><code>flutter create parking_admin</code></li>
 					<li class="fragment"><code>flutter create parking_user</code></li>
 				</ul>
 				<li class="fragment">Fokusera på grundläggande UI först:</li>
 				<ul>
-					<li class="fragment">Sätt upp navigation (NavigationRail/NavigationBar)</li>
+					<li class="fragment">Sätt upp navigation (BottomAppBar/NavigationBar/NavigationRail)</li>
 					<li class="fragment">Skapa tomma vyer för huvudfunktionerna</li>
 					<li class="fragment">Experimentera med olika widgets (knappar, listor, formulär)</li>
 					<li class="fragment">Använd hårdkodad data - ingen serveranslutning än</li>
@@ -686,14 +685,14 @@
 		<Title title="Kommande veckor"></Title>
 		<Content>
 			<ul>
-				<li class="fragment">Denna vecka (v.46): Grundläggande UI och navigation</li>
-				<li class="fragment">Nästa vecka (v.47): Layouts och serverintegration</li>
-				<li class="fragment">v.48: Forms och datahantering</li>
-				<li class="fragment">v.49: State management och responsive design</li>
-				<li class="fragment">v.50: Examination</li>
+				<li class="fragment">Denna vecka (v.11): Grundläggande UI och navigation</li>
+				<li class="fragment">Nästa vecka (v.12): Layouts och serverintegration</li>
+				<li class="fragment">v.13: Forms och datahantering</li>
+				<li class="fragment">v.14: State management och responsive design</li>
+				<li class="fragment">v.15: Examination</li>
 				<hr class="fragment" />
 				<li class="fragment">
-					<strong>Fullständig uppgiftsbeskrivning finns på kurswebben</strong>
+					<strong>Fullständig uppgiftsbeskrivning finns på Teams</strong>
 				</li>
 				<li class="fragment">Fokusera på att få grundstrukturen på plats denna vecka! 🎯</li>
 			</ul>

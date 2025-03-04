@@ -33,7 +33,7 @@
 	<Front></Front>
 
 	<Slide>
-		<Title title="Firebase Autentisering: Utmaningar"></Title>
+		<Title title="Firebase Autentisering: separat system från firestore"></Title>
 		<Content>
 			<ol>
 				<li class="fragment">Firebase Autentisering & Firebase Firestore</li>
@@ -50,7 +50,7 @@
 	</Slide>
 	
 	<Slide>
-		<Title title="Kärnproblemet"></Title>
+		<Title title="Vad är problemet vi behöver lösa?"></Title>
 		<Content>
 			<ol>
 				<li class="fragment">Firebase Auth och Databas är separata system</li>

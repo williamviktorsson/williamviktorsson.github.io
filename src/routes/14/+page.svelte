@@ -33,13 +33,12 @@
 	<Front></Front>
 
 	<Slide>
-		<Title title="Lokala Notifikationer i Flutter"></Title>
+		<Title title="Uppgift 6: Lokala Notifikationer i Flutter"></Title>
 		<Content>
 			<ol>
 				<li class="fragment">Vad ska vi bygga?</li>
 				<li class="fragment">Parkeringsapplikation med påminnelser</li>
-				<li class="fragment">Examination av systemintegration</li>
-				<li class="fragment">Flutter Local Notifications & Platform Integration</li>
+				<li class="fragment">Examination av nyttjande av hårdvaru-API:er</li>
 			</ol>
 		</Content>
 	</Slide>
@@ -61,7 +60,7 @@
 	</Slide>
 
 	<Slide>
-		<Title title="Implementation Steg"></Title>
+		<Title title="Implementations-steg"></Title>
 		<Content>
 			<ol>
 				<li class="fragment">Grundläggande Setup</li>
@@ -80,7 +79,7 @@
 	</Slide>
 
 	<Slide>
-		<Title title="Krav för Examination"></Title>
+		<Title title="Krav för examination (uppgift 6)"></Title>
 		<Content>
 			<ol>
 				<li class="fragment">Grundnivå (G)</li>
@@ -119,9 +118,9 @@
 	</Slide>
 
 	<Slide>
-		<Title title="Tack för idag!"></Title>
+		<Title title="Demo?"></Title>
 		<Content>
-			<div class="mt-60 text-center">Det var allt för idag!</div>
+			<div class="mt-60 text-center">Demo!</div>
 		</Content>
 	</Slide>
 

@@ -41,25 +41,36 @@
 				<li class="fragment">Events & States</li>
 				<li class="fragment">Implementation</li>
 				<li class="fragment">Testing</li>
+				<li class="fragment">Intro uppgift 4</li>
 			</ol>
 		</Content>
 	</Slide>
-	
-	<Slide in={async () => { showcode = false; await code1.update`` }}>
+
+	<Slide
+		in={async () => {
+			showcode = false
+			await code1.update``
+		}}
+	>
 		<Title title="Vad är BLoC?"></Title>
 		<Content>
 			<Split>
 				<ul>
-					<li class="fragment" oncurrent={async () => {
-						showcode = true
-						await code1.update`// Business Logic Component
+					<li
+						class="fragment"
+						oncurrent={async () => {
+							showcode = true
+							await code1.update`// Business Logic Component
 	class CounterBloc extends Bloc<CounterEvent, int> {
 	  CounterBloc() : super(0) {
 		on<Increment>((event, emit) => emit(state + 1));
 		on<Decrement>((event, emit) => emit(state - 1));
 	  }
 	}`
-					}}>Business Logic Component - separerar logik från UI</li>
+						}}
+					>
+						Business Logic Component - separerar logik från UI
+					</li>
 					<ul>
 						<li class="fragment">UI skickar Events</li>
 						<li class="fragment">BLoC emitterar States</li>
@@ -87,15 +98,22 @@
 			</Split>
 		</Content>
 	</Slide>
-	
-	<Slide in={async () => { showcode = false; await code2.update`` }}>
+
+	<Slide
+		in={async () => {
+			showcode = false
+			await code2.update``
+		}}
+	>
 		<Title title="Events & States"></Title>
 		<Content>
 			<Split>
 				<ul>
-					<li class="fragment" oncurrent={async () => {
-						showcode = true
-						await code2.update`// Events beskriver actions
+					<li
+						class="fragment"
+						oncurrent={async () => {
+							showcode = true
+							await code2.update`// Events beskriver actions
 	abstract class AuthEvent {}
 	
 	class LoginRequested extends AuthEvent {
@@ -112,7 +130,10 @@
 	  final Person user;
 	  AuthSuccess(this.user);
 	}`
-					}}>Events - Input till BLoC, beskriver actions</li>
+						}}
+					>
+						Events - Input till BLoC, beskriver actions
+					</li>
 					<li class="fragment">States - Output från BLoC, beskriver tillstånd</li>
 					<li class="fragment">BLoC konverterar Events till States</li>
 				</ul>
@@ -135,15 +156,22 @@
 			</Split>
 		</Content>
 	</Slide>
-	
-	<Slide in={async () => { showcode = false; await code3.update`` }}>
+
+	<Slide
+		in={async () => {
+			showcode = false
+			await code3.update``
+		}}
+	>
 		<Title title="Implementation"></Title>
 		<Content>
 			<Split>
 				<ul>
-					<li class="fragment" oncurrent={async () => {
-						showcode = true
-						await code3.update`class AuthBloc extends Bloc<AuthEvent, AuthState> {
+					<li
+						class="fragment"
+						oncurrent={async () => {
+							showcode = true
+							await code3.update`class AuthBloc extends Bloc<AuthEvent, AuthState> {
 	final AuthRepository repository;
 
 	AuthBloc(this.repository) : super(AuthInitial()) {
@@ -160,7 +188,10 @@
 		}
 	}
 }`
-					}}>BLoC Implementation</li>
+						}}
+					>
+						BLoC Implementation
+					</li>
 					<li class="fragment">Hantera events med {`on<Event>`}</li>
 					<li class="fragment">Emittera states som svar på events</li>
 					<li class="fragment">Använd repository för data operations</li>
@@ -184,15 +215,22 @@
 			</Split>
 		</Content>
 	</Slide>
-	
-	<Slide in={async () => { showcode = false; await code4.update`` }}>
+
+	<Slide
+		in={async () => {
+			showcode = false
+			await code4.update``
+		}}
+	>
 		<Title title="Testing"></Title>
 		<Content>
 			<Split>
 				<ul>
-					<li class="fragment" oncurrent={async () => {
-						showcode = true
-						await code4.update`// Testing med bloc_test
+					<li
+						class="fragment"
+						oncurrent={async () => {
+							showcode = true
+							await code4.update`// Testing med bloc_test
 blocTest<AuthBloc, AuthState>(
 	'emits [AuthLoading, AuthSuccess] när login lyckas',
 	build: () {
@@ -206,7 +244,10 @@ blocTest<AuthBloc, AuthState>(
 		isA<AuthSuccess>(),
 	],
 );`
-					}}>Testing med bloc_test package</li>
+						}}
+					>
+						Testing med bloc_test package
+					</li>
 					<li class="fragment">Mocka repositories med Mocktail</li>
 					<li class="fragment">Testa event handling och state transitions</li>
 					<li class="fragment">Verifiera error handling</li>
@@ -230,15 +271,22 @@ blocTest<AuthBloc, AuthState>(
 			</Split>
 		</Content>
 	</Slide>
-	
-	<Slide in={async () => { showcode = false; await code5.update`` }}>
+
+	<Slide
+		in={async () => {
+			showcode = false
+			await code5.update``
+		}}
+	>
 		<Title title="Integration med UI"></Title>
 		<Content>
 			<Split>
 				<ul>
-					<li class="fragment" oncurrent={async () => {
-						showcode = true
-						await code5.update`// Wrap app med BlocProvider
+					<li
+						class="fragment"
+						oncurrent={async () => {
+							showcode = true
+							await code5.update`// Wrap app med BlocProvider
 	BlocProvider(
 	  create: (context) => AuthBloc(authRepository),
 	  child: MyApp(),
@@ -269,7 +317,10 @@ blocTest<AuthBloc, AuthState>(
 	  onPressed: () => context.read<AuthBloc>().add(LoginRequested('username')),
 	  child: const Text('Login'),
 	);`
-					}}>BlocProvider för dependency injection</li>
+						}}
+					>
+						BlocProvider för dependency injection
+					</li>
 					<li class="fragment">Två sätt att bygga UI: BlocBuilder eller context.watch</li>
 					<li class="fragment">Switch expressions för clean state handling</li>
 					<li class="fragment">context.read för att skicka events</li>
@@ -293,7 +344,68 @@ blocTest<AuthBloc, AuthState>(
 			</Split>
 		</Content>
 	</Slide>
-	
+
+	<Slide>
+		<Title title="Uppgift 4: BLoC & Testing"></Title>
+		<Content>
+			<ul>
+				<li class="fragment">Mål</li>
+				<ul>
+					<li class="fragment">Refaktorera appen med BLoC för state management</li>
+					<li class="fragment">Skriva tester för BLoC-komponenter</li>
+					<li class="fragment">Använda Mocktail för att mocka repositories</li>
+				</ul>
+
+				<li class="fragment">Huvudkomponenter att implementera</li>
+				<ul>
+					<li class="fragment">VehicleBloc - hantering av fordon</li>
+					<li class="fragment">ParkingBloc - hantering av aktiva parkeringar</li>
+					<li class="fragment">ParkingSpaceBloc - hantering av parkeringsplatser</li>
+					<li class="fragment">AuthBloc - hantering av inloggning/användare</li>
+				</ul>
+
+				<li class="fragment">För varje BLoC behöver ni</li>
+				<ul>
+					<li class="fragment">Definiera events (vad som händer)</li>
+					<li class="fragment">Definiera states (appens tillstånd)</li>
+					<li class="fragment">Implementera bloc-logik (hantering av events)</li>
+				</ul>
+			</ul>
+		</Content>
+	</Slide>
+
+	<Slide>
+		<Title title="Implementationsguide & Testing"></Title>
+		<Content>
+			<Split>
+				<ul >
+					<li class="fragment">Struktur</li>
+					<pre class="fragment"><code
+							>lib/
+					  ├── blocs/            # Alla BLoC-komponenter
+					  │   ├── vehicle/      # Event, State, BLoC-filer
+					  │   ├── parking/      # för varje feature
+					  │   └── ...
+					  ├── repositories/     # Befintliga repositories
+					  └── views/            # UI-komponenter</code
+						></pre>
+					<li class="fragment">Testing (G-krav)</li>
+					<ul>
+						<li class="fragment">Minst ett test för success case per BLoC</li>
+						<li class="fragment">Minst ett test för error case per BLoC</li>
+						<li class="fragment">Mocka repositories med Mocktail</li>
+						<li class="fragment">Använd blocTest för att testa logiken</li>
+					</ul>
+					<li class="fragment">Tips</li>
+					<ul>
+						<li class="fragment">Börja med en BLoC i taget - events, states, logik</li>
+						<li class="fragment">Integrera UI med BlocProvider/BlocBuilder</li>
+						<li class="fragment">För VG, välj minst 2 av extrakraven</li>
+					</ul>
+				</ul>
+			</Split>
+		</Content>
+	</Slide>
 
 	<Slide>
 		<Title title="Demo time?"></Title>
