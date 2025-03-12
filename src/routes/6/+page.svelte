@@ -150,8 +150,7 @@
 				</li>
 				<li class="fragment">HTTP servern skrotas och ersätts med molntjänster i Firebase</li>
 				<li class="fragment">
-					Utökning av applikationen med integrering av kartor, notiser platsdata och potentiellt
-					bildtagning, bildhantering, delning till sociala medier.
+					Utökning av applikationen med schemaläggning och hantering av notiser.
 				</li>
 			</ol>
 		</Content>
@@ -229,6 +228,10 @@
 					<li class="fragment">Android SDK Command-line Tools</li>
 					<li class="fragment">Android Emulator</li>
 					<li class="fragment">Android SDK Platform-Tools</li>
+					<li class="fragment">På Windows för Emulatorn:</li>
+					<ul>
+						<li class="fragment">Android Emulator Hypervisor driver installer</li>
+					</ul>
 				</ul>
 			</ol>
 		</Content>
@@ -250,6 +253,11 @@
 						bästa sätt. Följ instruktionerna för din plattform.
 					</li>
 					<li class="fragment">Jag rekommenderar <code>AEHD</code> för Windows.</li>
+					<ul>
+						<li class="fragment">
+							Android Emulator Hypervisor driver installer under SDK Tools i Android studio
+						</li>
+					</ul>
 					<li class="fragment">Mac bör fungera OOTB</li>
 					<li class="fragment">Linux-användare följer guiden för KVM längre ned på sidan.</li>
 					<li class="fragment">Följ sedan steg två till 16</li>
@@ -629,7 +637,7 @@
 						<li class="fragment">Starta/stoppa parkering</li>
 					</ul>
 					<li class="fragment">
-						Använder förslagsvis <code>NavigationBar</code> eller <code>BottomAppBar</code> för navigation 
+						Använder förslagsvis <code>NavigationBar</code> eller <code>BottomAppBar</code> för navigation
 					</li>
 				</ul>
 			</ol>
