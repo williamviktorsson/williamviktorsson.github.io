@@ -604,7 +604,7 @@
 					Vi ska bygga en Flutter-applikation för parkeringsanvändare (mobil/web/desktop)
 				</li>
 				<ul>
-					<li class="fragment">Användare ska kunna hantera</li>
+					<li class="fragment">Användare ska kunna hantera sina fordon och parkera på parkeringsplatser</li>
 
 					<li class="fragment">Parkeringsadministratörer får fortsätta använda ert CLI</li>
 				</ul>

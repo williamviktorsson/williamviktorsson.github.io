@@ -288,7 +288,7 @@
 	)`
 						}}
 					>
-						Wrap hanterar överskjutande innehåll automatiskt
+						Wrap hanterar innehåll som tar för mycket plats per automagi
 					</li>
 				</ul>
 				<div>
@@ -337,6 +337,9 @@
 					>
 						ListView.builder för effektiv scrollning
 					</li>
+					<ul>
+						<li class="fragment">Index går upp/ned av att användaren skrollar</li>
+					</ul>
 					<li
 						class="fragment"
 						oncurrent={async () => {
@@ -360,6 +363,9 @@
 					>
 						GridView.builder för rutnätslayouter
 					</li>
+					<ul>
+						<li class="fragment">GridDelegate för att hantera hur innehåll i grid placeras</li>
+					</ul>
 				</ul>
 				<div>
 					<div class="enter" hidden={!showcode}>
@@ -599,6 +605,24 @@
 					</div>
 				</div>
 			</Split>
+		</Content>
+	</Slide>
+
+	<Slide>
+		<Title title="Demo"></Title>
+		<Content>
+			<ol>
+				<li class="fragment">Nytt projekt</li>
+				<li class="fragment">Stateful/Statelesswidget</li>
+				<li class="fragment">Basic navigering</li>
+				<li class="fragment">Första vy, scaffold</li>
+				<ul>
+					<li class="fragment">Kommunikation med dart-server</li>
+				</ul>
+				<li class="fragment">ListView</li>
+				<li class="fragment">FutureBuilder</li>
+				<li class="fragment">AlertDialog</li>
+			</ol>
 		</Content>
 	</Slide>
 
