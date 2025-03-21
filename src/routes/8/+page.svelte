@@ -187,7 +187,7 @@ context.pop();`
 						class="fragment"
 						oncurrent={async () => {
 							showcode = true
-							await code2.update`String? choice = showModalBottomSheet(
+							await code2.update`String? choice = await showModalBottomSheet(
     context: context,
     builder: (context) => Container(
         height: 300,
@@ -767,7 +767,6 @@ Column(
     // Prestanda-optimeringar
     cacheExtent: 100.0, // Cacha items utanför synligt område
     addAutomaticKeepAlives: false, // Förhindra onödig state-bevaring
-    addRepaintBoundaries: true, // Optimera omritning
 ),`
 						}}
 					>
