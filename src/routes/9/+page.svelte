@@ -204,7 +204,7 @@ class UserScreen extends StatelessWidget {
 							Bloc som ni kommer använda senare bygger vidare på Provider och är en mer fullfjädrad
 							state-management lösning
 						</li>
-					</ul>
+					</ul> 
 				</ul>
 				<div>
 					<div class="enter" hidden={!showcode}>

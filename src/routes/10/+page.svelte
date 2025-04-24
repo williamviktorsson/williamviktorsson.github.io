@@ -171,11 +171,29 @@
 						class="fragment"
 						oncurrent={async () => {
 							showcode = true
-							await code3.update`class AuthBloc extends Bloc<AuthEvent, AuthState> {
+							await code3.update`abstract class AuthEvent {}
+	
+class LoginRequested extends AuthEvent {
+	final String username;
+	LoginRequested(this.username);
+}
+
+// States beskriver applikationens tillstånd
+abstract class AuthState {}
+
+class AuthInitial extends AuthState {}
+class AuthLoading extends AuthState {}
+class AuthSuccess extends AuthState {
+	final Person user;
+	AuthSuccess(this.user);
+}
+						
+						
+class AuthBloc extends Bloc<AuthEvent, AuthState> {
 	final AuthRepository repository;
 
 	AuthBloc(this.repository) : super(AuthInitial()) {
-		on<LoginRequested>(_handleLogin);
+		on<LoginRequested>((event, emit) => _handleLogin(event, emit));
 	}
 
 	Future<void> _handleLogin(LoginRequested event,Emitter<AuthState> emit) async {
@@ -193,8 +211,8 @@
 						BLoC Implementation
 					</li>
 					<li class="fragment">Hantera events med {`on<Event>`}</li>
-					<li class="fragment">Emittera states som svar på events</li>
-					<li class="fragment">Använd repository för data operations</li>
+					<li class="fragment">emit state som svar på events</li>
+					<li class="fragment">Använd repository för data operationer</li>
 				</ul>
 				<div>
 					<div class="enter" hidden={!showcode}>
@@ -293,23 +311,28 @@ blocTest<AuthBloc, AuthState>(
 	);
 	
 	// Alternativ 1: BlocBuilder med switch
-	BlocBuilder<AuthBloc, AuthState>(
-	  builder: (context, state) => switch (state) {
-		AuthLoading() => const CircularProgressIndicator(),
-		AuthSuccess(user: Person user) => Text('Welcome ' + user.name),
-		_ => const LoginForm()
-	  },
-	);
-	
+
+	build(context){
+		return BlocBuilder<AuthBloc, AuthState>(
+			builder: (context, state) => switch (state) {
+				AuthLoading() => const CircularProgressIndicator(),
+				AuthSuccess(user: Person user) => Text('Welcome ' + user.name),
+				_ => const LoginForm()
+			},
+		);
+	}
+
 	// Alternativ 2: Samma sak med context.watch
 
-	final AuthState state = context.watch<AuthBloc>().state;
-	
-	return switch (state) {
-		AuthLoading() => const CircularProgressIndicator(),
-		AuthSuccess(user: Person user) => Text('Welcome ' + user.name),
-		_ => const LoginForm()
-	};
+	build(context){
+		final AuthState state = context.watch<AuthBloc>().state;
+		
+		return switch (state) {
+			AuthLoading() => const CircularProgressIndicator(),
+			AuthSuccess(user: Person user) => Text('Welcome ' + user.name),
+			_ => const LoginForm()
+		};
+	}
 
 	
 	// Skicka events (samma för båda alternativen)

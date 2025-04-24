@@ -33,94 +33,94 @@
 	<Front></Front>
 
 	<Slide>
-		<Title title="Firebase Autentisering: separat system från firestore"></Title>
+		<Title title="Uppgift 6: Lokala Notifikationer i Flutter"></Title>
 		<Content>
 			<ol>
-				<li class="fragment">Firebase Autentisering & Firebase Firestore</li>
-				<li class="fragment">Varför vi behöver koppla systemen</li>
-				<li class="fragment">Lösningsmetoder</li>
-				<ul>
-					<li class="fragment">Firebase Functions (Serverlös)</li>
-					<li class="fragment">Applikationsnivå-registrering</li>
-					<li class="fragment">För- och nackdelar med varje metod</li>
+				<li class="fragment">Vad ska vi bygga?</li>
+				<li class="fragment">Parkeringsapplikation med påminnelser</li>
+				<li class="fragment">Examination av nyttjande av hårdvaru-API:er</li>
+			</ol>
+		</Content>
+	</Slide>
 
-				</ul>
-			</ol>
-		</Content>
-	</Slide>
-	
 	<Slide>
-		<Title title="Vad är problemet vi behöver lösa?"></Title>
+		<Title title="Hårdvaru/System API:er: Allmän Arbetsgång"></Title>
 		<Content>
 			<ol>
-				<li class="fragment">Firebase Auth och Databas är separata system</li>
-				<li class="fragment">Auth skapar användaruppgifter</li>
-				<li class="fragment">Databasen behöver egen användarrepresentation</li>
-				<li class="fragment">Båda systemen måste hållas synkroniserade</li>
-			</ol>
-		</Content>
-	</Slide>
-	
-	<Slide>
-		<Title title="Varför koppla ihop systemen?"></Title>
-		<Content>
-			<ol>
-				<li class="fragment">Auth ger endast grundläggande användarinfo som t.ex. id & mail</li>
-				<li class="fragment">Extra användardata måste lagras i databasen</li>
-				<li class="fragment">StateChangeStream visar endast information från auth-systemet</li>
-				<li class="fragment">Profildata kräver databasinformation</li>
-			</ol>
-		</Content>
-	</Slide>
-	
-	<Slide>
-		<Title title="Lösning 1: Firebase Functions"></Title>
-		<Content>
-			<ol>
-				<li class="fragment">Serverlösa funktioner fångar auth-skapande</li>
-				<li class="fragment">Blockerande funktion säkerställer synkronisering</li>
-				<li class="fragment">Transaktionell operation garanterar konsistens</li>
-				<li class="fragment">Kräver aktiverad fakturering (kreditkort behövs)</li>
-			</ol>
-		</Content>
-	</Slide>
-	
-	<Slide>
-		<Title title="Lösning 2: Applikationsflöde"></Title>
-		<Content>
-			<ol>
-				<li class="fragment">Inga faktureringskrav</li>
-				<li class="fragment">Implementerar mellanliggande registreringssteg</li>
-				<li class="fragment">Kontrollerar saknade databasinlägg</li>
-				<li class="fragment">Samlar in ytterligare användarinformation</li>
-				<li class="fragment">Skapar databasinlägg innan flödet slutförs</li>
-			</ol>
-		</Content>
-	</Slide>
-	
-	<Slide>
-		<Title title="Implementeringsflöde"></Title>
-		<Content>
-			<ol>
-				<li class="fragment">Användaren slutför autentisering</li>
-				<li class="fragment">Appen kontrollerar databasinlägg</li>
-				<li class="fragment">Vid saknat inlägg, visa registreringsformulär</li>
-				<li class="fragment">Samla in ytterligare information</li>
+				<li class="fragment">Plattformsspecifik Konfiguration</li>
 				<ul>
-					<li class="fragment">Profildetaljer</li>
-					<li class="fragment">Obligatorisk information</li>
-					<li class="fragment">Skapa databasinlägg</li>
-					<li class="fragment">Slutför användarflöde</li>
-					<li class="fragment">Visa huvudapplikationen</li>
+					<li class="fragment">AndroidManifest.xml (Android)</li>
+					<li class="fragment">Info.plist & AppDelegate.swift (iOS)</li>
+				</ul>
+				<li class="fragment">Behörighetshantering</li>
+				<li class="fragment">Native till Flutter-kommunikation</li>
+				<li class="fragment">Livscykelhantering</li>
+			</ol>
+		</Content>
+	</Slide>
+
+	<Slide>
+		<Title title="Implementations-steg"></Title>
+		<Content>
+			<ol>
+				<li class="fragment">Grundläggande Setup</li>
+				<ul>
+					<li class="fragment">Plugin installation</li>
+					<li class="fragment">Plattformskonfiguration</li>
+				</ul>
+				<li class="fragment">Notifikationshantering</li>
+				<ul>
+					<li class="fragment">Behörigheter</li>
+					<li class="fragment">Schemaläggning</li>
+				</ul>
+				<li class="fragment">Integration med Parkeringar</li>
+			</ol>
+		</Content>
+	</Slide>
+
+	<Slide>
+		<Title title="Krav för examination (uppgift 6)"></Title>
+		<Content>
+			<ol>
+				<li class="fragment">Grundnivå (G)</li>
+				<ul>
+					<li class="fragment">Fungerande notifikationer på <strong>en</strong> plattformar</li>
+					<li class="fragment">Korrekt behörighetshantering</li>
+					<li class="fragment">Integration med befintlig BLoC-arkitektur</li>
+				</ul>
+				<li class="fragment">Utökad Funktionalitet (VG) - Välj 1</li>
+				<ul>
+					<li class="fragment">Anpassade påminnelser (ljud/text)</li>
+					<li class="fragment">Interaktiva notifikationer (knappval, t.ex. förläng parkering)</li>
+					<li class="fragment">Lägg till notiser för ytterligare <strong>en</strong> platform</li>
 				</ul>
 			</ol>
 		</Content>
 	</Slide>
 
 	<Slide>
-		<Title title="Tack för idag!"></Title>
+		<Title title="Vanliga Utmaningar & Lösningar"></Title>
 		<Content>
-			<div class="mt-60 text-center">Det var allt för idag!</div>
+			<ol>
+				<li class="fragment">Plattformsspecifika Skillnader</li>
+				<ul>
+					<li class="fragment">Android vs iOS konfiguration</li>
+					<li class="fragment">Behörighetsmodeller</li>
+				</ul>
+				<li class="fragment">Timing & Bakgrundshantering</li>
+				<ul>
+					<li class="fragment">Tidszoner</li>
+					<li class="fragment">Batterioptimering</li>
+				</ul>
+				<li class="fragment">Testning & Verifiering</li>
+			</ol>
+		</Content>
+	</Slide>
+
+	<Slide>
+		<Title title="Demo?"></Title>
+		<Content>
+			<div class="mt-60 text-center">Demo!</div>
 		</Content>
 	</Slide>
 
